@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">BabyNanas</string>
+    <string name="app_name" translatable="false">BabyNanas</string>
+    <string name="drawer_header_text">Menu</string>
+    <string name="action_settings">Preferencies</string>
+    <string name="nanas">Nanas</string>
+    <string name="relax">Relax</string>
+    <string name="classical">Classical</string>
+    <string name="configuration">Configuració</string>
+    <string name="about">About</string>
+
 </resources>

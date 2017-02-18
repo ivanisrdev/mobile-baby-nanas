@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_item_attachment"
+            android:checked="true"
+            android:icon="@drawable/ic_attachment"
+            android:title="@string/nanas" />
+        <item
+            android:id="@+id/navigation_item_images"
+            android:icon="@drawable/ic_image"
+            android:title="@string/relax" />
+        <item
+            android:id="@+id/navigation_item_location"
+            android:icon="@drawable/ic_place"
+            android:title="@string/classical" />
+    </group>
+
+    <item android:title="@string/action_settings">
+        <menu>
+            <item
+                android:icon="@drawable/ic_emoticon"
+                android:title="@string/configuration" />
+            <item
+                android:icon="@drawable/ic_emoticon"
+                android:title="@string/about" />
+        </menu>
+    </item>
+
+</menu>
