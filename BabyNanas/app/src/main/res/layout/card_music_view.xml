@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:card_view="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="3dp">
+
+  <android.support.v7.widget.CardView
+    android:id="@+id/card_view"
+    android:layout_width="500dp"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    card_view:cardBackgroundColor="@color/accent_material_light"
+    card_view:cardCornerRadius="7dp"
+    card_view:cardElevation="10dp">
+    <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <TextView
+        android:id="@+id/info_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it."
+        />
+
+      <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/info_text"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_play_circle_outline_white_24dp"/>
+
+
+
+    </RelativeLayout>
+
+  </android.support.v7.widget.CardView>
+  <Button
+    android:id="@+id/button"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginTop="20dp"
+    android:layout_below="@+id/card_view"
+    android:paddingTop="20dp"
+    android:stateListAnimator="@drawable/button_style_custom"
+    android:text="Press Me"/>
+
+</RelativeLayout>
