@@ -93,10 +93,15 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             Bundle args = getArguments();
             int tabPosition = args.getInt(TAB_POSITION);
-            TextView tv = new TextView(getActivity());
-            tv.setGravity(Gravity.CENTER);
-            tv.setText("Text in Tab #" + tabPosition);
-            return tv;
+            if (tabPosition == 1) {
+                View v =  inflater.inflate(R.layout.card_music_view, container, false);
+                return v;
+            } else {
+                TextView tv = new TextView(getActivity());
+                tv.setGravity(Gravity.CENTER);
+                tv.setText("Text in Tab #" + tabPosition);
+                return tv;
+            }
         }
     }
 
