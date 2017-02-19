@@ -1,60 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<android.support.v4.widget.NestedScrollView
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:id="@+id/card_view"
-  android:layout_width="170dp"
-  android:layout_height="200dp"
-  android:layout_centerHorizontal="true"
-  app:cardBackgroundColor="@color/primary_dark"
-  app:cardCornerRadius="2dp"
-  app:cardElevation="2dp">
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/card_main"
+    android:id="@+id/card_group"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin">
 
-    <ImageView
-      android:id="@+id/image"
-      android:layout_width="0dp"
-      android:layout_height="150dp"
-      android:contentDescription="caratula"
-      android:scaleType="fitXY"
-      android:src="@drawable/baby1"
+    <android.support.v7.widget.CardView
+      android:id="@+id/card_view"
+      android:layout_width="170dp"
+      android:layout_height="200dp"
+      android:layout_centerHorizontal="true"
+      app:cardBackgroundColor="@color/primary_dark"
+      app:cardCornerRadius="2dp"
+      app:cardElevation="2dp"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"/>
+      app:layout_constraintRight_toLeftOf="@+id/card_view1"
+      app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-      android:id="@+id/info_text"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="8dp"
-      android:layout_marginBottom="8dp"
-      android:layout_marginStart="8dp"
-      android:layout_marginEnd="8dp"
-      android:layout_below="@id/image"
-      android:text="Mi pequeño bebe"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toLeftOf="@+id/image_play"
-      app:layout_constraintTop_toBottomOf="@+id/image"/>
+      <android.support.constraint.ConstraintLayout
+        android:id="@+id/card_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageView
-      android:id="@+id/image_play"
-      android:layout_width="30dp"
-      android:layout_height="30dp"
-      android:layout_marginTop="8dp"
-      android:layout_marginBottom="8dp"
-      android:layout_marginEnd="8dp"
-      android:contentDescription="play_button"
-      android:src="@drawable/ic_play_circle_outline_white_24dp"
-      app:layout_constraintBottom_toBottomOf="parent"
+        <ImageView
+          android:id="@+id/image"
+          android:layout_width="0dp"
+          android:layout_height="150dp"
+          android:contentDescription="caratula"
+          android:scaleType="fitXY"
+          android:src="@drawable/baby1"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+          android:id="@+id/info_text"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:layout_marginBottom="8dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginEnd="8dp"
+          android:layout_below="@id/image"
+          android:text="Mi pequeño bebe"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintRight_toLeftOf="@+id/image_play"
+          app:layout_constraintTop_toBottomOf="@+id/image"/>
+
+        <ImageView
+          android:id="@+id/image_play"
+          android:layout_width="30dp"
+          android:layout_height="30dp"
+          android:layout_marginTop="8dp"
+          android:layout_marginBottom="8dp"
+          android:layout_marginEnd="8dp"
+          android:contentDescription="play_button"
+          android:src="@drawable/ic_play_circle_outline_white_24dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/image"/>
+
+      </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+      android:id="@+id/card_view1"
+      android:layout_width="170dp"
+      android:layout_height="200dp"
+      android:layout_centerHorizontal="true"
+      app:cardBackgroundColor="@color/primary_dark"
+      app:cardCornerRadius="2dp"
+      app:cardElevation="2dp"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintLeft_toRightOf="@+id/card_view"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/image"/>
+      app:layout_constraintTop_toTopOf="parent">
+
+      <android.support.constraint.ConstraintLayout
+        android:id="@+id/card_main1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+          android:id="@+id/image1"
+          android:layout_width="0dp"
+          android:layout_height="150dp"
+          android:contentDescription="caratula"
+          android:scaleType="fitXY"
+          android:src="@drawable/baby1"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+          android:id="@+id/info_text1"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:layout_marginBottom="8dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginEnd="8dp"
+          android:layout_below="@id/image1"
+          android:text="Claro de luna"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintRight_toLeftOf="@+id/image_play1"
+          app:layout_constraintTop_toBottomOf="@+id/image1"/>
+
+        <ImageView
+          android:id="@+id/image_play1"
+          android:layout_width="30dp"
+          android:layout_height="30dp"
+          android:layout_marginTop="8dp"
+          android:layout_marginBottom="8dp"
+          android:layout_marginEnd="8dp"
+          android:contentDescription="play_button"
+          android:src="@drawable/ic_play_circle_outline_white_24dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/image1"/>
+
+      </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
 
   </android.support.constraint.ConstraintLayout>
 
-</android.support.v7.widget.CardView>
+</android.support.v4.widget.NestedScrollView>
