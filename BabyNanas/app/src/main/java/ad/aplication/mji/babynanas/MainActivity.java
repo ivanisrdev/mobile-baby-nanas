@@ -26,11 +26,13 @@ import android.widget.Toast;
 import com.example.jean.jcplayer.JcAudio;
 import com.example.jean.jcplayer.JcPlayerService;
 import com.example.jean.jcplayer.JcPlayerView;
+import io.realm.Realm;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements JcPlayerService.OnInvalidPathListener {
     private DrawerLayout mDrawerLayout;
     private  JcPlayerView jcPlayerView;
+    private Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements JcPlayerService.O
         viewPager.setAdapter(adapter);
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
+
+        realm = Realm.getDefaultInstance();
     }
 
     @Override
@@ -97,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements JcPlayerService.O
     protected void onDestroy() {
         super.onDestroy();
         jcPlayerView.kill();
+        realm.close();
     }
 
     @Override
