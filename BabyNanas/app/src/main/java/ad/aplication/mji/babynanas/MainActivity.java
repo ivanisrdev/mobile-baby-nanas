@@ -18,12 +18,19 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.jean.jcplayer.JcAudio;
+import com.example.jean.jcplayer.JcPlayerService;
+import com.example.jean.jcplayer.JcPlayerView;
+import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements JcPlayerService.OnInvalidPathListener {
     private DrawerLayout mDrawerLayout;
+    private  JcPlayerView jcPlayerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +56,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        jcPlayerView = (JcPlayerView) findViewById(R.id.jcPlayerView);
+
+        ArrayList<JcAudio> jcAudios = new ArrayList<>();
+        jcAudios.add(JcAudio.createFromAssets("Relaxing_Music_Sleep", "Relaxing_Music_Sleep.mp3"));
+        jcPlayerView.initPlaylist(jcAudios);
+        jcPlayerView.registerInvalidPathListener(this);
+
         MusicTypePagerAdapter adapter = new MusicTypePagerAdapter(getSupportFragmentManager(),
-                this.getApplicationContext());
+            this.getApplicationContext(), jcAudios);
         ViewPager viewPager = (ViewPager)findViewById(R.id.viewpager);
         viewPager.setAdapter(adapter);
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabLayout);
@@ -73,17 +87,42 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onPause(){
+        super.onPause();
+        jcPlayerView.createNotification();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        jcPlayerView.kill();
+    }
+
+    @Override
+    public void onPathError(JcAudio jcAudio) {
+        Toast.makeText(this, jcAudio.getPath() + " with problems", Toast.LENGTH_LONG).show();
+//        player.removeAudio(jcAudio);
+//        player.next();
+    }
+
+    public void playAudio(JcAudio jcAudio){
+        jcPlayerView.playAudio(jcAudio);
+        Toast.makeText(this, jcPlayerView.getCurrentAudio().getOrigin().toString(), Toast.LENGTH_SHORT).show();
+    }
+
     public static class MusicTypeFragment extends Fragment {
         private static final String TAB_POSITION = "tab_position";
+        private static  final String PLAY_LIST = "PlayList";
 
         public MusicTypeFragment() {
-
         }
 
-        public static MusicTypeFragment newInstance(int tabPosition) {
+        public static MusicTypeFragment newInstance(int tabPosition, ArrayList<JcAudio> jcAudioList) {
             MusicTypeFragment fragment = new MusicTypeFragment();
             Bundle args = new Bundle();
             args.putInt(TAB_POSITION, tabPosition);
+            args.putSerializable(PLAY_LIST, jcAudioList);
             fragment.setArguments(args);
             return fragment;
         }
@@ -93,8 +132,17 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             Bundle args = getArguments();
             int tabPosition = args.getInt(TAB_POSITION);
+            final ArrayList<JcAudio> jcAudioList = (ArrayList<JcAudio>) args.getSerializable(PLAY_LIST);
             if (tabPosition == 1) {
                 View v =  inflater.inflate(R.layout.card_music_view, container, false);
+                ImageView playButton = (ImageView) v.findViewById(R.id.image_play);
+                playButton.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        JcAudio JcAudio = jcAudioList.get(0);
+                        ((MainActivity)getActivity()).playAudio(JcAudio);
+                    }
+                });
                 return v;
             } else {
                 TextView tv = new TextView(getActivity());
@@ -111,10 +159,12 @@ public class MainActivity extends AppCompatActivity {
         private String tabTitles[] = new String[] { getString(R.string.nanas),
                 getString(R.string.relax), getString(R.string.classical) };
         private Context context;
+        private ArrayList<JcAudio> jcAudioList;
 
-        public MusicTypePagerAdapter(FragmentManager fm, Context context) {
+        public MusicTypePagerAdapter(FragmentManager fm, Context context, ArrayList<JcAudio> jcAudioList) {
             super(fm);
             this.context = context;
+            this.jcAudioList = jcAudioList;
         }
 
         @Override
@@ -124,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return MusicTypeFragment.newInstance(position + 1);
+            return MusicTypeFragment.newInstance(position + 1, jcAudioList);
         }
 
         @Override
