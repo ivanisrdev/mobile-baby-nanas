@@ -4,10 +4,8 @@ import android.app.Application;
 import android.util.Log;
 import com.facebook.stetho.Stetho;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
-import io.realm.DynamicRealm;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
-import io.realm.RealmMigration;
 
 /**
  * Created by j2agm on 21/02/2017.
@@ -29,20 +27,12 @@ public class MyApplication extends Application {
     Log.i(TAG, "onCreate: Realm Object");
 
     RealmConfiguration config = new RealmConfiguration.Builder()
-        .name("myrealm.realm")
-        .schemaVersion(42)
-        .migration(new MyMigration())
+        .name("music.realm")
+        .deleteRealmIfMigrationNeeded()
+        .schemaVersion(1)
         .build();
 // Use the config
     Realm.setDefaultConfiguration(config);
 
-  }
-
-  private class MyMigration implements RealmMigration {
-    @Override
-    public void migrate(DynamicRealm realm, long oldVersion, long newVersion) {
-      Log.w(TAG, "migrate() called with: " + "realm = [" + realm + "]," +
-          "oldVersion = [" + oldVersion + "], newVersion = [" + newVersion + "]");
-    }
   }
 }
