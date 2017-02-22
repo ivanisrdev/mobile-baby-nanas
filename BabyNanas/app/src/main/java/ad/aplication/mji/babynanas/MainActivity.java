@@ -83,8 +83,6 @@ public class MainActivity extends AppCompatActivity implements
     realm = Realm.getDefaultInstance();
 
     RealmQuery<Music> query = realm.where(Music.class);
-
-
     RealmResults<Music> results = query.findAll();
 
     Music musciTemp = results.get(1);
