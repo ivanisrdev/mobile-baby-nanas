@@ -1,5 +1,6 @@
 package ad.aplication.mji.babynanas;
 
+import ad.aplication.mji.babynanas.adapters.MusicRecyclerAdapter;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,6 +15,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -36,9 +40,9 @@ import realmBD.Music;
 public class MainActivity extends AppCompatActivity implements
     JcPlayerService.OnInvalidPathListener {
 
+  private static JcPlayerView jcPlayerView;
+  private static Realm realm;
   private DrawerLayout mDrawerLayout;
-  private JcPlayerView jcPlayerView;
-  private Realm realm;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -81,14 +85,6 @@ public class MainActivity extends AppCompatActivity implements
     tabLayout.setupWithViewPager(viewPager);
 
     realm = Realm.getDefaultInstance();
-
-    RealmQuery<Music> query = realm.where(Music.class);
-    RealmResults<Music> results = query.findAll();
-
-    Music musciTemp = results.get(1);
-
-    String titletemp = musciTemp.getTitle();
-
   }
 
   @Override
@@ -158,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements
       int tabPosition = args.getInt(TAB_POSITION);
       final ArrayList<JcAudio> jcAudioList = (ArrayList<JcAudio>) args.getSerializable(PLAY_LIST);
       if (tabPosition == 1) {
-        View v = inflater.inflate(R.layout.card_music_view, container, false);
+        View v = inflater.inflate(R.layout.card_music_all_view, container, false);
         ImageView playButton = (ImageView) v.findViewById(R.id.image_play);
         playButton.setOnClickListener(new OnClickListener() {
           @Override
@@ -169,10 +165,33 @@ public class MainActivity extends AppCompatActivity implements
         });
         return v;
       } else {
-        TextView tv = new TextView(getActivity());
-        tv.setGravity(Gravity.CENTER);
-        tv.setText("Text in Tab #" + tabPosition);
-        return tv;
+        if (tabPosition == 2) {
+          RealmQuery<Music> query = realm.where(Music.class);
+          RealmResults<Music> results = query.findAll();
+          View v =  inflater.inflate(R.layout.fragment_list_music, container, false);
+          RecyclerView recyclerView = (RecyclerView)v.findViewById(R.id.recyclerView);
+          RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
+          recyclerView.setItemAnimator(itemAnimator);
+          recyclerView.setHasFixedSize(true);
+          recyclerView.setItemViewCacheSize(20);
+          recyclerView.setDrawingCacheEnabled(true);
+          recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+          recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+          recyclerView.setAdapter(new MusicRecyclerAdapter((MainActivity) getActivity(), results));
+
+          ArrayList<JcAudio> jcAudios = new ArrayList<>();
+          for (int i = 0; i < results.size(); i++) {
+            jcAudios.add(JcAudio.createFromAssets(results.get(i).getTitle(), results.get(i).getTitle()+".mp3"));
+          }
+          jcPlayerView.initPlaylist(jcAudios);
+
+          return v;
+        } else {
+          TextView tv = new TextView(getActivity());
+          tv.setGravity(Gravity.CENTER);
+          tv.setText("Text in Tab #" + tabPosition);
+          return tv;
+        }
       }
     }
   }
