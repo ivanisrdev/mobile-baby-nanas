@@ -72,14 +72,8 @@ public class MainActivity extends AppCompatActivity implements
 
     jcPlayerView = (JcPlayerView) findViewById(R.id.jcPlayerView);
 
-    ArrayList<JcAudio> jcAudios = new ArrayList<>();
-    jcAudios.add(JcAudio.createFromAssets("Relaxing_Music_Sleep", "Relaxing_Music_Sleep.mp3"));
-    jcAudios.add(JcAudio.createFromAssets("Sonido_Agua", "Sonido_Agua.mp3"));
-    jcPlayerView.initPlaylist(jcAudios);
-    jcPlayerView.registerInvalidPathListener(this);
-
     MusicTypePagerAdapter adapter = new MusicTypePagerAdapter(getSupportFragmentManager(),
-        this.getApplicationContext(), jcAudios);
+        this.getApplicationContext());
     ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
     viewPager.setAdapter(adapter);
     TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
@@ -189,11 +183,10 @@ public class MainActivity extends AppCompatActivity implements
     public MusicTypeFragment() {
     }
 
-    public static MusicTypeFragment newInstance(int tabPosition, ArrayList<JcAudio> jcAudioList) {
+    public static MusicTypeFragment newInstance(int tabPosition) {
       MusicTypeFragment fragment = new MusicTypeFragment();
       Bundle args = new Bundle();
       args.putInt(TAB_POSITION, tabPosition);
-      args.putSerializable(PLAY_LIST, jcAudioList);
       fragment.setArguments(args);
       return fragment;
     }
@@ -204,15 +197,18 @@ public class MainActivity extends AppCompatActivity implements
         Bundle savedInstanceState) {
       Bundle args = getArguments();
       int tabPosition = args.getInt(TAB_POSITION);
-      final ArrayList<JcAudio> jcAudioList = (ArrayList<JcAudio>) args.getSerializable(PLAY_LIST);
       if (tabPosition == 1) {
         View v = inflater.inflate(R.layout.card_music_all_view, container, false);
         ImageView playButton = (ImageView) v.findViewById(R.id.image_play);
+        final ArrayList<JcAudio> jcAudios = new ArrayList<>();
+        jcAudios.add(JcAudio.createFromAssets("Relaxing_Music_Sleep", "Relaxing_Music_Sleep.mp3"));
+        jcAudios.add(JcAudio.createFromAssets("Sonido_Agua", "Sonido_Agua.mp3"));
+        jcPlayerView.initPlaylist(jcAudios);
+        jcPlayerView.registerInvalidPathListener((MainActivity) getActivity());
         playButton.setOnClickListener(new OnClickListener() {
           @Override
           public void onClick(View v) {
-            JcAudio JcAudio = jcAudioList != null ? jcAudioList.get(0) : null;
-            ((MainActivity) getActivity()).playAudio(JcAudio);
+            ((MainActivity) getActivity()).playAudio(jcAudios.get(0));
           }
         });
         return v;
@@ -256,12 +252,10 @@ public class MainActivity extends AppCompatActivity implements
     private String tabTitles[] = new String[]{getString(R.string.nanas),
         getString(R.string.relax), getString(R.string.classical)};
     private Context context;
-    private ArrayList<JcAudio> jcAudioList;
 
-    MusicTypePagerAdapter(FragmentManager fm, Context context, ArrayList<JcAudio> jcAudioList) {
+    MusicTypePagerAdapter(FragmentManager fm, Context context) {
       super(fm);
       this.context = context;
-      this.jcAudioList = jcAudioList;
     }
 
     @Override
@@ -271,7 +265,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public Fragment getItem(int position) {
-      return MusicTypeFragment.newInstance(position + 1, jcAudioList);
+      return MusicTypeFragment.newInstance(position + 1);
     }
 
     @Override
