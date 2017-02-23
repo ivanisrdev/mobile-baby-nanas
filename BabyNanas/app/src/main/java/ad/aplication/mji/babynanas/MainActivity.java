@@ -74,6 +74,14 @@ public class MainActivity extends AppCompatActivity implements
 
     ArrayList<JcAudio> jcAudios = new ArrayList<>();
     jcAudios.add(JcAudio.createFromAssets("Relaxing_Music_Sleep", "Relaxing_Music_Sleep.mp3"));
+    jcAudios.add(JcAudio.createFromAssets("Sonido_Agua", "Sonido_Agua.mp3"));
+    jcAudios.add(JcAudio.createFromAssets("Sonido_Corazon", "Sonido_Corazon.mp3"));
+    jcAudios.add(JcAudio.createFromAssets("Sonido_Fuego", "Sonido_Fuego.mp3"));
+    jcAudios.add(JcAudio.createFromAssets("Sonido_Lluvia", "Sonido_Lluvia.mp3"));
+    jcAudios.add(JcAudio.createFromAssets("Sonido_Mar", "Sonido_Mar.mp3"));
+    jcAudios.add(JcAudio.createFromAssets("Sonido_Pajaros", "Sonido_Pajaros.mp3"));
+    jcAudios.add(JcAudio.createFromAssets("Sonido_Viento", "Sonido_Viento.mp3"));
+    jcAudios.add(JcAudio.createFromAssets("Sonido_Vientre", "Sonido_Vientre.mp3"));
     jcPlayerView.initPlaylist(jcAudios);
     jcPlayerView.registerInvalidPathListener(this);
 
