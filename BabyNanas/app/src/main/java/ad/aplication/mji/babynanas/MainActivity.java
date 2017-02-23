@@ -235,9 +235,9 @@ public class MainActivity extends AppCompatActivity implements
           for (int i = 0; i < results.size(); i++) {
             jcAudios.add(JcAudio.createFromAssets(results.get(i).getTitle(),
                 results.get(i).getTitle()+".mp3"));
-            jcPlayerView.initPlaylist(jcAudios);
           }
-
+          jcPlayerView.initPlaylist(jcAudios);
+          jcPlayerView.registerInvalidPathListener((MainActivity) getActivity());
 
           return v;
         } else {
