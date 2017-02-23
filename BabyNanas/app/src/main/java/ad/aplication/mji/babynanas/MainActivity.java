@@ -85,6 +85,57 @@ public class MainActivity extends AppCompatActivity implements
     tabLayout.setupWithViewPager(viewPager);
 
     realm = Realm.getDefaultInstance();
+
+    //create elemnts en BBDD
+    realm.beginTransaction();
+
+    // Add a music
+   /* Music music = realm.createObject(Music.class, 1L);
+    music.setTitle("Relaxing_Music_Sleep");
+    music.setType("Relax");
+    music.setCount(0);
+
+    Music music2 = realm.createObject(Music.class, 2L);
+    music2.setTitle("Sonido_Agua");
+    music2.setType("Relax");
+    music2.setCount(0);
+
+    Music music3 = realm.createObject(Music.class, 3L);
+    music3.setTitle("Sonido_Corazon");
+    music3.setType("Relax");
+    music3.setCount(0);
+
+    Music music4 = realm.createObject(Music.class,4L);
+    music4.setTitle("Sonido_Fuego");
+    music4.setType("Relax");
+    music4.setCount(0);
+
+    Music music5 = realm.createObject(Music.class,5L);
+    music5.setTitle("Sonido_Lluvia");
+    music5.setType("Relax");
+    music5.setCount(0);
+
+    Music music6 = realm.createObject(Music.class,6L);
+    music6.setTitle("Sonido_Mar");
+    music6.setType("Relax");
+    music6.setCount(0);
+
+    Music music7 = realm.createObject(Music.class,7L);
+    music7.setTitle("Sonido_Pajaros");
+    music7.setType("Relax");
+    music7.setCount(0);
+
+    Music music8 = realm.createObject(Music.class,8L);
+    music8.setTitle("Sonido_Viento");
+    music8.setType("Relax");
+    music8.setCount(0);
+
+    Music music9 = realm.createObject(Music.class,9L);
+    music9.setTitle("Sonido_Vientre");
+    music9.setType("Relax");
+    music9.setCount(0);
+
+    realm.commitTransaction();*/
   }
 
   @Override
