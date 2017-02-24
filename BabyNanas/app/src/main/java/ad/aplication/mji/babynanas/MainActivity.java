@@ -23,9 +23,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.jean.jcplayer.JcAudio;
@@ -35,6 +33,7 @@ import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import java.util.ArrayList;
+import java.util.List;
 import realmBD.Music;
 
 public class MainActivity extends AppCompatActivity implements
@@ -82,10 +81,10 @@ public class MainActivity extends AppCompatActivity implements
     realm = Realm.getDefaultInstance();
 
     //create elemnts en BBDD
-    realm.beginTransaction();
+    /*realm.beginTransaction();
 
     // Add a music
-   /* Music music = realm.createObject(Music.class, 1L);
+    Music music = realm.createObject(Music.class, 1L);
     music.setTitle("Relaxing_Music_Sleep");
     music.setType("Relax");
     music.setCount(0);
@@ -171,14 +170,13 @@ public class MainActivity extends AppCompatActivity implements
 
   public void playAudio(JcAudio jcAudio) {
     jcPlayerView.playAudio(jcAudio);
-    Toast.makeText(this, jcPlayerView.getCurrentAudio().getOrigin().toString(), Toast.LENGTH_SHORT)
+    Toast.makeText(this, jcPlayerView.getCurrentAudio().getTitle(), Toast.LENGTH_SHORT)
         .show();
   }
 
   public static class MusicTypeFragment extends Fragment {
 
     private static final String TAB_POSITION = "tab_position";
-    private static final String PLAY_LIST = "PlayList";
 
     public MusicTypeFragment() {
     }
@@ -195,29 +193,19 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
         Bundle savedInstanceState) {
+
       Bundle args = getArguments();
       int tabPosition = args.getInt(TAB_POSITION);
       if (tabPosition == 1) {
         View v = inflater.inflate(R.layout.card_music_all_view, container, false);
-        ImageView playButton = (ImageView) v.findViewById(R.id.image_play);
-        final ArrayList<JcAudio> jcAudios = new ArrayList<>();
-        jcAudios.add(JcAudio.createFromAssets("Relaxing_Music_Sleep", "Relaxing_Music_Sleep.mp3"));
-        jcAudios.add(JcAudio.createFromAssets("Sonido_Agua", "Sonido_Agua.mp3"));
-        jcPlayerView.initPlaylist(jcAudios);
-        jcPlayerView.registerInvalidPathListener((MainActivity) getActivity());
-        playButton.setOnClickListener(new OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            ((MainActivity) getActivity()).playAudio(jcAudios.get(0));
-          }
-        });
         return v;
       } else {
         if (tabPosition == 2) {
           RealmQuery<Music> query = realm.where(Music.class);
-          RealmResults<Music> results = query.findAll();
-          View v =  inflater.inflate(R.layout.fragment_list_music, container, false);
-          RecyclerView recyclerView = (RecyclerView)v.findViewById(R.id.recyclerView);
+          RealmResults<Music> results = query.equalTo(Music.TYPE, "Relax")
+              .findAll();
+          View v = inflater.inflate(R.layout.fragment_list_music, container, false);
+          RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
           RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
           recyclerView.setItemAnimator(itemAnimator);
           recyclerView.setHasFixedSize(true);
@@ -225,14 +213,18 @@ public class MainActivity extends AppCompatActivity implements
           recyclerView.setDrawingCacheEnabled(true);
           recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
           recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-          recyclerView.setAdapter(new MusicRecyclerAdapter((MainActivity) getActivity(), results));
+          MusicRecyclerAdapter musicRecyclerAdapter = new MusicRecyclerAdapter(
+              (MainActivity) getActivity(), results);
+          recyclerView.setAdapter(musicRecyclerAdapter);
+          //musicRecyclerAdapter.notifyDataSetChanged();
 
           ArrayList<JcAudio> jcAudios = new ArrayList<>();
           for (int i = 0; i < results.size(); i++) {
             jcAudios.add(JcAudio.createFromAssets(results.get(i).getTitle(),
-                results.get(i).getTitle()+".mp3"));
+                results.get(i).getTitle() + ".mp3"));
           }
           jcPlayerView.initPlaylist(jcAudios);
+          List<JcAudio> size = jcPlayerView.getMyPlaylist();
           jcPlayerView.registerInvalidPathListener((MainActivity) getActivity());
 
           return v;
