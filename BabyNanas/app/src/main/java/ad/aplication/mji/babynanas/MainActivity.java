@@ -19,12 +19,10 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.example.jean.jcplayer.JcAudio;
 import com.example.jean.jcplayer.JcPlayerService;
@@ -33,7 +31,6 @@ import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import java.util.ArrayList;
-import java.util.List;
 import realmBD.Music;
 
 public class MainActivity extends AppCompatActivity implements
@@ -81,37 +78,37 @@ public class MainActivity extends AppCompatActivity implements
     realm = Realm.getDefaultInstance();
 
     //create elemnts en BBDD
-    /*realm.beginTransaction();
+    //realm.beginTransaction();
 
     // Add a music
-    Music music = realm.createObject(Music.class, 1L);
-    music.setTitle("Relaxing_Music_Sleep");
-    music.setType("Relax");
+/*    Music music = realm.createObject(Music.class, 15L);
+    music.setTitle("Angel_Feliz");
+    music.setType("Nana");
     music.setCount(0);
 
-    Music music2 = realm.createObject(Music.class, 2L);
-    music2.setTitle("Sonido_Agua");
-    music2.setType("Relax");
+    Music music2 = realm.createObject(Music.class, 16L);
+    music2.setTitle("Nana_Arrorro");
+    music2.setType("Nana");
     music2.setCount(0);
 
-    Music music3 = realm.createObject(Music.class, 3L);
-    music3.setTitle("Sonido_Corazon");
-    music3.setType("Relax");
+    Music music3 = realm.createObject(Music.class, 17L);
+    music3.setTitle("Nana_Duermete_nino");
+    music3.setType("Nana");
     music3.setCount(0);
 
-    Music music4 = realm.createObject(Music.class,4L);
-    music4.setTitle("Sonido_Fuego");
-    music4.setType("Relax");
+    Music music4 = realm.createObject(Music.class,18L);
+    music4.setTitle("Nana_Estrellita_donde_estas");
+    music4.setType("Nana");
     music4.setCount(0);
 
-    Music music5 = realm.createObject(Music.class,5L);
-    music5.setTitle("Sonido_Lluvia");
-    music5.setType("Relax");
+    Music music5 = realm.createObject(Music.class,19L);
+    music5.setTitle("Nana_Mama_naturaleza");
+    music5.setType("Nana");
     music5.setCount(0);
 
-    Music music6 = realm.createObject(Music.class,6L);
-    music6.setTitle("Sonido_Mar");
-    music6.setType("Relax");
+    Music music6 = realm.createObject(Music.class,20L);
+    music6.setTitle("Nana_Muñequita_linda");
+    music6.setType("Nana");
     music6.setCount(0);
 
     Music music7 = realm.createObject(Music.class,7L);
@@ -129,7 +126,14 @@ public class MainActivity extends AppCompatActivity implements
     music9.setType("Relax");
     music9.setCount(0);
 
-    realm.commitTransaction();*/
+    realm.executeTransaction(new Realm.Transaction() {
+      @Override
+      public void execute(Realm realm) {
+        RealmResults<Music> result = realm.where(Music.class).equalTo(Music.ID,15L).findAll();
+        result.deleteAllFromRealm();
+      }
+    });*/
+    //realm.commitTransaction();
   }
 
   @Override
@@ -197,7 +201,31 @@ public class MainActivity extends AppCompatActivity implements
       Bundle args = getArguments();
       int tabPosition = args.getInt(TAB_POSITION);
       if (tabPosition == 1) {
-        View v = inflater.inflate(R.layout.card_music_all_view, container, false);
+        RealmQuery<Music> query = realm.where(Music.class);
+        RealmResults<Music> results = query.equalTo(Music.TYPE, "Nana")
+            .findAll();
+        View v = inflater.inflate(R.layout.fragment_list_music, container, false);
+        RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+        RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
+        recyclerView.setItemAnimator(itemAnimator);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setItemViewCacheSize(20);
+        recyclerView.setDrawingCacheEnabled(true);
+        recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        MusicRecyclerAdapter musicRecyclerAdapter = new MusicRecyclerAdapter(
+            (MainActivity) getActivity(), results);
+        recyclerView.setAdapter(musicRecyclerAdapter);
+        //musicRecyclerAdapter.notifyDataSetChanged();
+
+        ArrayList<JcAudio> jcAudios = new ArrayList<>();
+        for (int i = 0; i < results.size(); i++) {
+          jcAudios.add(JcAudio.createFromAssets(results.get(i).getTitle(),
+              results.get(i).getTitle() + ".mp3"));
+        }
+        jcPlayerView.initPlaylist(jcAudios);
+        jcPlayerView.registerInvalidPathListener((MainActivity) getActivity());
+
         return v;
       } else {
         if (tabPosition == 2) {
@@ -224,16 +252,40 @@ public class MainActivity extends AppCompatActivity implements
                 results.get(i).getTitle() + ".mp3"));
           }
           jcPlayerView.initPlaylist(jcAudios);
-          List<JcAudio> size = jcPlayerView.getMyPlaylist();
           jcPlayerView.registerInvalidPathListener((MainActivity) getActivity());
 
           return v;
         } else {
-          TextView tv = new TextView(getActivity());
-          tv.setGravity(Gravity.CENTER);
-          tv.setText("Text in Tab #" + tabPosition);
-          return tv;
+          if (tabPosition == 3) {
+            RealmQuery<Music> query = realm.where(Music.class);
+            RealmResults<Music> results = query.equalTo(Music.TYPE, "Classical")
+                .findAll();
+            View v = inflater.inflate(R.layout.fragment_list_music, container, false);
+            RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+            RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
+            recyclerView.setItemAnimator(itemAnimator);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setItemViewCacheSize(20);
+            recyclerView.setDrawingCacheEnabled(true);
+            recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+            recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+            MusicRecyclerAdapter musicRecyclerAdapter = new MusicRecyclerAdapter(
+                (MainActivity) getActivity(), results);
+            recyclerView.setAdapter(musicRecyclerAdapter);
+            //musicRecyclerAdapter.notifyDataSetChanged();
+
+            ArrayList<JcAudio> jcAudios = new ArrayList<>();
+            for (int i = 0; i < results.size(); i++) {
+              jcAudios.add(JcAudio.createFromAssets(results.get(i).getTitle(),
+                  results.get(i).getTitle() + ".mp3"));
+            }
+            jcPlayerView.initPlaylist(jcAudios);
+            jcPlayerView.registerInvalidPathListener((MainActivity) getActivity());
+
+            return v;
+          }
         }
+        return null;
       }
     }
   }
