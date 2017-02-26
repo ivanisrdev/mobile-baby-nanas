@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements
   @Override
   public void onPause() {
     super.onPause();
-    jcPlayerView.createNotification(R.drawable.baby_bed);
+    jcPlayerView.createNotification();
   }
 
   @Override
