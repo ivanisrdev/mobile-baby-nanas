@@ -1,7 +1,6 @@
 package ad.aplication.mji.babynanas;
 
 import ad.aplication.mji.babynanas.adapters.MusicRecyclerAdapter;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -68,8 +67,7 @@ public class MainActivity extends AppCompatActivity implements
 
     jcPlayerView = (JcPlayerView) findViewById(R.id.jcPlayerView);
 
-    MusicTypePagerAdapter adapter = new MusicTypePagerAdapter(getSupportFragmentManager(),
-        this.getApplicationContext());
+    MusicTypePagerAdapter adapter = new MusicTypePagerAdapter(getSupportFragmentManager());
     ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
     viewPager.setAdapter(adapter);
     TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
@@ -290,16 +288,14 @@ public class MainActivity extends AppCompatActivity implements
     }
   }
 
-  class MusicTypePagerAdapter extends FragmentStatePagerAdapter {
+  private class MusicTypePagerAdapter extends FragmentStatePagerAdapter {
 
     final int PAGE_COUNT = 3;
     private String tabTitles[] = new String[]{getString(R.string.nanas),
         getString(R.string.relax), getString(R.string.classical)};
-    private Context context;
 
-    MusicTypePagerAdapter(FragmentManager fm, Context context) {
+    MusicTypePagerAdapter(FragmentManager fm) {
       super(fm);
-      this.context = context;
     }
 
     @Override
