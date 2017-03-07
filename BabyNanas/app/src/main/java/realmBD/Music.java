@@ -13,6 +13,7 @@ public class Music extends RealmObject {
   public static final String TITLE = "title";
   public static final String TYPE = "type";
   public static final String COUNT = "count";
+  public static final String IMAGENAME = "image";
 
   @PrimaryKey
   @Index
@@ -21,6 +22,7 @@ public class Music extends RealmObject {
   private String title;
   private String type;
   private int count;
+  private String image;
 
   public long getId() { return id; }
   public void setId(long id) { this.id = id; }
@@ -30,4 +32,6 @@ public class Music extends RealmObject {
   public void setType(String type) { this.type = type; }
   public int getCount() { return count; }
   public void setCount(int count) { this.count = count; }
+  public void setImageName (String image) { this.image = image; }
+  public String getImageName() { return image; }
 }

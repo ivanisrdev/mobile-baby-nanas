@@ -81,59 +81,68 @@ public class MainActivity extends AppCompatActivity implements
     //realm.beginTransaction();
 
     // Add a music
-/*    Music music = realm.createObject(Music.class, 15L);
+    Music music = realm.createObject(Music.class, 15L);
     music.setTitle("Angel_Feliz");
     music.setType("Nana");
     music.setCount(0);
+    music.setImageName("baby5.jpg");
 
     Music music2 = realm.createObject(Music.class, 16L);
     music2.setTitle("Nana_Arrorro");
     music2.setType("Nana");
     music2.setCount(0);
+    music.setImageName("baby6.jpg");
 
     Music music3 = realm.createObject(Music.class, 17L);
     music3.setTitle("Nana_Duermete_nino");
     music3.setType("Nana");
     music3.setCount(0);
+    music.setImageName("baby7.jpg");
 
     Music music4 = realm.createObject(Music.class,18L);
     music4.setTitle("Nana_Estrellita_donde_estas");
     music4.setType("Nana");
     music4.setCount(0);
+    music.setImageName("baby8.jpg");
 
     Music music5 = realm.createObject(Music.class,19L);
     music5.setTitle("Nana_Mama_naturaleza");
     music5.setType("Nana");
     music5.setCount(0);
+    music.setImageName("baby9.jpg");
 
     Music music6 = realm.createObject(Music.class,20L);
     music6.setTitle("Nana_Muñequita_linda");
     music6.setType("Nana");
     music6.setCount(0);
+    music.setImageName("baby10.jpg");
 
     Music music7 = realm.createObject(Music.class,7L);
     music7.setTitle("Sonido_Pajaros");
     music7.setType("Relax");
     music7.setCount(0);
+    music.setImageName("baby11.jpg");
 
     Music music8 = realm.createObject(Music.class,8L);
     music8.setTitle("Sonido_Viento");
     music8.setType("Relax");
     music8.setCount(0);
+    music.setImageName("baby12.jpg");
 
     Music music9 = realm.createObject(Music.class,9L);
     music9.setTitle("Sonido_Vientre");
     music9.setType("Relax");
     music9.setCount(0);
+    music.setImageName("baby13.jpg");
 
-    realm.executeTransaction(new Realm.Transaction() {
+   /* realm.executeTransaction(new Realm.Transaction() {
       @Override
       public void execute(Realm realm) {
         RealmResults<Music> result = realm.where(Music.class).equalTo(Music.ID,15L).findAll();
         result.deleteAllFromRealm();
       }
     });*/
-    //realm.commitTransaction();
+    realm.commitTransaction();
   }
 
   @Override

@@ -2,6 +2,8 @@ package ad.aplication.mji.babynanas.adapters;
 
 import ad.aplication.mji.babynanas.MainActivity;
 import ad.aplication.mji.babynanas.R;
+
+import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,10 +37,14 @@ public class MusicRecyclerAdapter  extends RecyclerView.Adapter<MusicRecyclerAda
 
   @Override
   public void onBindViewHolder(ViewHolder viewHolder, int i) {
+    String image;
     final Music item = mItems.get(i);
     viewHolder.mTextView.setText(item.getTitle());
     //TODO ad image dynamically
-    viewHolder.mImageView.setImageResource(R.drawable.baby1);
+    Resources resources = mActivity.getApplication().getResources();
+    final int resourceId = resources.getIdentifier(item.getImageName(), "drawable",
+            mActivity.getApplication().getPackageName());
+    viewHolder.mImageView.setImageResource(resourceId);
     viewHolder.mImagePlayView.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
