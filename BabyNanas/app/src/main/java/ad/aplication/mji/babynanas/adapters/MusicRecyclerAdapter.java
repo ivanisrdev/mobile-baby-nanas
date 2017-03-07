@@ -3,7 +3,6 @@ package ad.aplication.mji.babynanas.adapters;
 import ad.aplication.mji.babynanas.MainActivity;
 import ad.aplication.mji.babynanas.R;
 import android.content.res.Resources;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
 import com.example.jean.jcplayer.JcAudio;
 import io.realm.RealmResults;
 import realmBD.Music;
@@ -43,7 +43,10 @@ public class MusicRecyclerAdapter  extends RecyclerView.Adapter<MusicRecyclerAda
     Resources resources = mActivity.getApplication().getResources();
     final int resourceId = resources.getIdentifier(item.getImageName(), "drawable",
             mActivity.getApplication().getPackageName());
-    viewHolder.mImageView.setImageDrawable(ContextCompat.getDrawable(mActivity, resourceId));
+    Glide.with(mActivity)
+        .load(resourceId)
+        .into(viewHolder.mImageView);
+    //viewHolder.mImageView.setImageDrawable(ContextCompat.getDrawable(mActivity, resourceId));
     viewHolder.mImagePlayView.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
