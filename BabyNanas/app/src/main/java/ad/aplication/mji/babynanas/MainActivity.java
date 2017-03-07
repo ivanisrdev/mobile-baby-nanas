@@ -76,62 +76,62 @@ public class MainActivity extends AppCompatActivity implements
     realm = Realm.getDefaultInstance();
 
     //create elemnts en BBDD
-    //realm.beginTransaction();
+    /*realm.beginTransaction();
 
     // Add a music
     Music music = realm.createObject(Music.class, 15L);
     music.setTitle("Angel_Feliz");
     music.setType("Nana");
     music.setCount(0);
-    music.setImageName("baby5.jpg");
+    music.setImageName("baby5");
 
     Music music2 = realm.createObject(Music.class, 16L);
     music2.setTitle("Nana_Arrorro");
     music2.setType("Nana");
     music2.setCount(0);
-    music.setImageName("baby6.jpg");
+    music2.setImageName("baby6");
 
     Music music3 = realm.createObject(Music.class, 17L);
     music3.setTitle("Nana_Duermete_nino");
     music3.setType("Nana");
     music3.setCount(0);
-    music.setImageName("baby7.jpg");
+    music3.setImageName("baby7");
 
     Music music4 = realm.createObject(Music.class,18L);
     music4.setTitle("Nana_Estrellita_donde_estas");
     music4.setType("Nana");
     music4.setCount(0);
-    music.setImageName("baby8.jpg");
+    music4.setImageName("baby8");
 
     Music music5 = realm.createObject(Music.class,19L);
     music5.setTitle("Nana_Mama_naturaleza");
     music5.setType("Nana");
     music5.setCount(0);
-    music.setImageName("baby9.jpg");
+    music5.setImageName("baby9");
 
     Music music6 = realm.createObject(Music.class,20L);
     music6.setTitle("Nana_Muñequita_linda");
     music6.setType("Nana");
     music6.setCount(0);
-    music.setImageName("baby10.jpg");
+    music6.setImageName("baby10");
 
     Music music7 = realm.createObject(Music.class,7L);
     music7.setTitle("Sonido_Pajaros");
     music7.setType("Relax");
     music7.setCount(0);
-    music.setImageName("baby11.jpg");
+    music7.setImageName("baby11");
 
     Music music8 = realm.createObject(Music.class,8L);
     music8.setTitle("Sonido_Viento");
     music8.setType("Relax");
     music8.setCount(0);
-    music.setImageName("baby12.jpg");
+    music8.setImageName("baby12");
 
     Music music9 = realm.createObject(Music.class,9L);
     music9.setTitle("Sonido_Vientre");
     music9.setType("Relax");
     music9.setCount(0);
-    music.setImageName("baby13.jpg");
+    music9.setImageName("baby13");
 
    /* realm.executeTransaction(new Realm.Transaction() {
       @Override
@@ -140,7 +140,11 @@ public class MainActivity extends AppCompatActivity implements
         result.deleteAllFromRealm();
       }
     });*/
-    realm.commitTransaction();
+    //realm.commitTransaction();
+
+    //delete all
+//    realm.close();
+//    Realm.deleteRealm(realm.getConfiguration());
   }
 
   @Override
