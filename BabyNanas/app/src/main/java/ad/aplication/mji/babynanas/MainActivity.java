@@ -1,7 +1,9 @@
 package ad.aplication.mji.babynanas;
 
 import ad.aplication.mji.babynanas.adapters.MusicRecyclerAdapter;
+import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -61,7 +63,16 @@ public class MainActivity extends AppCompatActivity implements
             menuItem.setChecked(true);
             mDrawerLayout.closeDrawers();
             Toast.makeText(MainActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
-            return true;
+            switch (menuItem.getItemId()) {
+              case R.id.nanas_music:
+                return true;
+              case R.id.pref:
+                Intent i = new Intent(MainActivity.this, MyPreferencesActivity.class);
+                startActivity(i);
+                return true;
+              default:
+                return true;
+            }
           }
         });
 
@@ -227,6 +238,17 @@ public class MainActivity extends AppCompatActivity implements
         }
         return null;
       }
+    }
+  }
+
+  public static class PrefsFragment extends PreferenceFragment {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+
+      // Load the preferences from an XML resource
+      addPreferencesFromResource(R.xml.preferences);
     }
   }
 
