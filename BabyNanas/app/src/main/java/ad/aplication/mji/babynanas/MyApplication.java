@@ -57,83 +57,54 @@ public class MyApplication extends Application {
       Realm.deleteRealm(realm.getConfiguration());*/
 
       realm.beginTransaction();
-      // Add a music
-      Music music = new Music();
-      music.setId(1L);
-      music.setTitle("Angel_Feliz");
-      music.setType("Nana");
-      music.setCount(0);
-      music.setImageName("baby5");
-      realm.copyToRealmOrUpdate(music);
+      // Add a music type Nana
+      Music musicNana1 = new Music(1L,"Nana_Angel_Feliz","Nana",0,"baby5");
+      realm.copyToRealmOrUpdate(musicNana1);
+      Music musicNana2 = new Music(2L,"Nana_Arrorro","Nana",0,"baby6");
+      realm.copyToRealmOrUpdate(musicNana2);
+      Music musicNana3 = new Music(3L,"Nana_Duermete_niño","Nana",0,"baby7");
+      realm.copyToRealmOrUpdate(musicNana3);
+      Music musicNana4 = new Music(4L,"Nana_Estrellita_donde_estas","Nana",0,"baby8");
+      realm.copyToRealmOrUpdate(musicNana4);
+      Music musicNana5 = new Music(5L,"Nana_Mama_naturaleza","Nana",0,"baby3");
+      realm.copyToRealmOrUpdate(musicNana5);
+      Music musicNana6 = new Music(6L,"Nana_Muñequita_linda","Nana",0,"baby12");
+      realm.copyToRealmOrUpdate(musicNana6);
 
-      Music music2 = new Music();
-      music2.setId(2L);
-      music2.setTitle("Nana_Arrorro");
-      music2.setType("Nana");
-      music2.setCount(0);
-      music2.setImageName("baby6");
-      realm.copyToRealmOrUpdate(music2);
+      // Add a music type Relax
+      Music musicRelax1 = new Music(7L,"Sonido_Agua","Relax",0,"agua");
+      realm.copyToRealmOrUpdate(musicRelax1);
+      Music musicRelax2 = new Music(8L,"Sonido_Corazon","Relax",0,"corazon");
+      realm.copyToRealmOrUpdate(musicRelax2);
+      Music musicRelax3 = new Music(9L,"Sonido_Fuego","Relax",0,"fuego");
+      realm.copyToRealmOrUpdate(musicRelax3);
+      Music musicRelax4 = new Music(10L,"Sonido_Lluvia","Relax",0,"lluvia");
+      realm.copyToRealmOrUpdate(musicRelax4);
+      Music musicRelax5 = new Music(11L,"Sonido_Mar","Relax",0,"mar");
+      realm.copyToRealmOrUpdate(musicRelax5);
+      Music musicRelax6 = new Music(12L,"Sonido_Pajaros","Relax",0,"pajaros");
+      realm.copyToRealmOrUpdate(musicRelax6);
+      Music musicRelax7 = new Music(13L,"Sonido_Viento","Relax",0,"viento");
+      realm.copyToRealmOrUpdate(musicRelax7);
+      Music musicRelax8 = new Music(14L,"Sonido_Vientre","Relax",0,"baby4");
+      realm.copyToRealmOrUpdate(musicRelax8);
 
-      Music music3 = new Music();
-      music3.setId(3L);
-      music3.setTitle("Nana_Duermete_nino");
-      music3.setType("Nana");
-      music3.setCount(0);
-      music3.setImageName("baby7");
-      realm.copyToRealmOrUpdate(music3);
-
-      Music music4 = new Music();
-      music4.setId(4L);
-      music4.setTitle("Nana_Estrellita_donde_estas");
-      music4.setType("Nana");
-      music4.setCount(0);
-      music4.setImageName("baby8");
-      realm.copyToRealmOrUpdate(music4);
-
-      Music music5 = new Music();
-      music5.setId(5L);
-      music5.setTitle("Nana_Mama_naturaleza");
-      music5.setType("Nana");
-      music5.setCount(0);
-      music5.setImageName("baby3");
-      realm.copyToRealmOrUpdate(music5);
-
-      Music music6 = new Music();
-      music6.setId(6L);
-      music6.setTitle("Nana_Muñequita_linda");
-      music6.setType("Nana");
-      music6.setCount(0);
-      music6.setImageName("baby10");
-      realm.copyToRealmOrUpdate(music6);
-
-      Music music7 = new Music();
-      music7.setId(7L);
-      music7.setTitle("Sonido_Pajaros");
-      music7.setType("Relax");
-      music7.setCount(0);
-      music7.setImageName("baby11");
-      realm.copyToRealmOrUpdate(music7);
-
-      Music music8 = new Music();
-      music8.setId(8L);
-      music8.setTitle("Sonido_Viento");
-      music8.setType("Relax");
-      music8.setCount(0);
-      music8.setImageName("baby12");
-      realm.copyToRealmOrUpdate(music8);
-
-      Music music9 = new Music();
-      music9.setId(9L);
-      music9.setTitle("Sonido_Vientre");
-      music9.setType("Relax");
-      music9.setCount(0);
-      music9.setImageName("baby13");
-      realm.copyToRealmOrUpdate(music9);
+      // Add a music type Classical
+      Music musicClassical1 = new Music(15L,"Classical_Bach_Prelude","Classical",0,"baby10");
+      realm.copyToRealmOrUpdate(musicClassical1);
+      Music musicClassical2 = new Music(16L,"Classical_Chopin_Nocturne","Classical",0,"baby11");
+      realm.copyToRealmOrUpdate(musicClassical2);
+      Music musicClassical3 = new Music(17L,"Classical_Schubert_Impromptu","Classical",0,"baby13");
+      realm.copyToRealmOrUpdate(musicClassical3);
+      Music musicClassical4 = new Music(18L,"Classical_Schubert_Liszt_Ave_Maria","Classical",0,"baby14");
+      realm.copyToRealmOrUpdate(musicClassical4);
+      Music musicClassical5 = new Music(19L,"Classical_Tzvi_Erez_Bach","Classical",0,"baby2");
+      realm.copyToRealmOrUpdate(musicClassical5);
 
    /* realm.executeTransaction(new Realm.Transaction() {
       @Override
       public void execute(Realm realm) {
-        RealmResults<Music> result = realm.where(Music.class).equalTo(Music.ID,15L).findAll();
+        RealmResults<Music> result = realm.where(Music.class).equalTo(Music.ID,19L).findAll();
         result.deleteAllFromRealm();
       }
     });*/
