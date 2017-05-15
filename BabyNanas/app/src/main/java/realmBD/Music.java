@@ -24,6 +24,18 @@ public class Music extends RealmObject {
   private int count;
   private String image;
 
+  public Music(long id, String title, String type, int count, String image) {
+    setId(id);
+    setTitle(title);
+    setType(type);
+    setCount(count);
+    setImageName(image);
+  }
+
+  public Music(){
+
+  }
+
   public long getId() { return id; }
   public void setId(long id) { this.id = id; }
   public String getTitle() { return title; }
