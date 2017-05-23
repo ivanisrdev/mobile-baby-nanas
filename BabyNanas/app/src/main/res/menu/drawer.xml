@@ -4,15 +4,15 @@
         <item
             android:id="@+id/nanas_music"
             android:checked="true"
-            android:icon="@drawable/ic_attachment"
+            android:icon="@drawable/ic_menu_music"
             android:title="@string/nanas" />
         <item
             android:id="@+id/relax_music"
-            android:icon="@drawable/ic_image"
+            android:icon="@drawable/ic_menu_music"
             android:title="@string/relax" />
         <item
             android:id="@+id/classical_music"
-            android:icon="@drawable/ic_place"
+            android:icon="@drawable/ic_menu_music"
             android:title="@string/classical" />
     </group>
 
