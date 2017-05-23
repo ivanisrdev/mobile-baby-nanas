@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements
   private static JcPlayerView jcPlayerView;
   private static Realm realm;
   private DrawerLayout mDrawerLayout;
+  private ViewPager viewPager;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,16 @@ public class MainActivity extends AppCompatActivity implements
             Toast.makeText(MainActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
             switch (menuItem.getItemId()) {
               case R.id.nanas_music:
+                  viewPager.setCurrentItem(0, true);
+                  menuItem.setChecked(true);
+                  return true;
+              case R.id.relax_music:
+                viewPager.setCurrentItem(1, true);
+                menuItem.setChecked(true);
+                return true;
+              case R.id.classical_music:
+                viewPager.setCurrentItem(2, true);
+                menuItem.setChecked(true);
                 return true;
               case R.id.pref:
                 Intent i = new Intent(MainActivity.this, MyPreferencesActivity.class);
@@ -79,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements
     jcPlayerView = (JcPlayerView) findViewById(R.id.jcPlayerView);
 
     MusicTypePagerAdapter adapter = new MusicTypePagerAdapter(getSupportFragmentManager());
-    ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+    viewPager = (ViewPager) findViewById(R.id.viewpager);
     viewPager.setAdapter(adapter);
     TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
     tabLayout.setupWithViewPager(viewPager);

@@ -7,11 +7,11 @@
             android:icon="@drawable/ic_attachment"
             android:title="@string/nanas" />
         <item
-            android:id="@+id/navigation_item_images"
+            android:id="@+id/relax_music"
             android:icon="@drawable/ic_image"
             android:title="@string/relax" />
         <item
-            android:id="@+id/navigation_item_location"
+            android:id="@+id/classical_music"
             android:icon="@drawable/ic_place"
             android:title="@string/classical" />
     </group>
