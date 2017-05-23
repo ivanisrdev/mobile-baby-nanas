@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements
         .setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
           @Override
           public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            menuItem.setChecked(true);
             mDrawerLayout.closeDrawers();
             Toast.makeText(MainActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
             switch (menuItem.getItemId()) {
