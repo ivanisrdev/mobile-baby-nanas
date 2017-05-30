@@ -8,6 +8,7 @@ import com.facebook.stetho.Stetho;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmResults;
 import realmBD.Music;
 
 /**
@@ -58,50 +59,50 @@ public class MyApplication extends Application {
 
       realm.beginTransaction();
       // Add a music type Nana
-      Music musicNana1 = new Music(1L,"Nana_Angel_Feliz","Nana",0,"baby5");
+      Music musicNana1 = new Music(1L,"Angel feliz","Nana",0,"baby5");
       realm.copyToRealmOrUpdate(musicNana1);
-      Music musicNana2 = new Music(2L,"Nana_Arrorro","Nana",0,"baby6");
+      Music musicNana2 = new Music(2L,"Arrorro","Nana",0,"baby6");
       realm.copyToRealmOrUpdate(musicNana2);
-      Music musicNana3 = new Music(3L,"Nana_Duermete_niño","Nana",0,"baby7");
+      Music musicNana3 = new Music(3L,"Duermete bebe","Nana",0,"baby7");
       realm.copyToRealmOrUpdate(musicNana3);
-      Music musicNana4 = new Music(4L,"Nana_Estrellita_donde_estas","Nana",0,"baby8");
+      Music musicNana4 = new Music(4L,"Estrellita donde estas","Nana",0,"baby8");
       realm.copyToRealmOrUpdate(musicNana4);
-      Music musicNana5 = new Music(5L,"Nana_Mama_naturaleza","Nana",0,"baby3");
+      Music musicNana5 = new Music(5L,"Mama naturaleza","Nana",0,"baby3");
       realm.copyToRealmOrUpdate(musicNana5);
-      Music musicNana6 = new Music(6L,"Nana_Muñequita_linda","Nana",0,"baby12");
+      Music musicNana6 = new Music(6L,"Muñequita linda","Nana",0,"baby12");
       realm.copyToRealmOrUpdate(musicNana6);
 
       // Add a music type Relax
-      Music musicRelax1 = new Music(7L,"Sonido_Agua","Relax",0,"agua");
+      Music musicRelax1 = new Music(7L,"Agua","Relax",0,"agua");
       realm.copyToRealmOrUpdate(musicRelax1);
-      Music musicRelax2 = new Music(8L,"Sonido_Corazon","Relax",0,"corazon");
+      Music musicRelax2 = new Music(8L,"Corazon","Relax",0,"corazon");
       realm.copyToRealmOrUpdate(musicRelax2);
-      Music musicRelax3 = new Music(9L,"Sonido_Fuego","Relax",0,"fuego");
+      Music musicRelax3 = new Music(9L,"Fuego","Relax",0,"fuego");
       realm.copyToRealmOrUpdate(musicRelax3);
-      Music musicRelax4 = new Music(10L,"Sonido_Lluvia","Relax",0,"lluvia");
+      Music musicRelax4 = new Music(10L,"Lluvia","Relax",0,"lluvia");
       realm.copyToRealmOrUpdate(musicRelax4);
-      Music musicRelax5 = new Music(11L,"Sonido_Mar","Relax",0,"mar");
+      Music musicRelax5 = new Music(11L,"Mar","Relax",0,"mar");
       realm.copyToRealmOrUpdate(musicRelax5);
-      Music musicRelax6 = new Music(12L,"Sonido_Pajaros","Relax",0,"pajaros");
+      Music musicRelax6 = new Music(12L,"Pajaros","Relax",0,"pajaros");
       realm.copyToRealmOrUpdate(musicRelax6);
-      Music musicRelax7 = new Music(13L,"Sonido_Viento","Relax",0,"viento");
+      Music musicRelax7 = new Music(13L,"Viento","Relax",0,"viento");
       realm.copyToRealmOrUpdate(musicRelax7);
-      Music musicRelax8 = new Music(14L,"Sonido_Vientre","Relax",0,"baby4");
+      Music musicRelax8 = new Music(14L,"Vientre","Relax",0,"baby4");
       realm.copyToRealmOrUpdate(musicRelax8);
 
       // Add a music type Classical
-      Music musicClassical1 = new Music(15L,"Classical_Bach_Prelude","Classical",0,"baby10");
+      Music musicClassical1 = new Music(15L,"Bach prelude","Classical",0,"baby10");
       realm.copyToRealmOrUpdate(musicClassical1);
-      Music musicClassical2 = new Music(16L,"Classical_Chopin_Nocturne","Classical",0,"baby11");
+      Music musicClassical2 = new Music(16L,"Chopin nocturne","Classical",0,"baby11");
       realm.copyToRealmOrUpdate(musicClassical2);
-      Music musicClassical3 = new Music(17L,"Classical_Schubert_Impromptu","Classical",0,"baby13");
+      Music musicClassical3 = new Music(17L,"Schubert impromptu","Classical",0,"baby13");
       realm.copyToRealmOrUpdate(musicClassical3);
-      Music musicClassical4 = new Music(18L,"Classical_Schubert_Liszt_Ave_Maria","Classical",0,"baby14");
+      Music musicClassical4 = new Music(18L,"Schubert ave maria","Classical",0,"baby14");
       realm.copyToRealmOrUpdate(musicClassical4);
-      Music musicClassical5 = new Music(19L,"Classical_Tzvi_Erez_Bach","Classical",0,"baby2");
+      Music musicClassical5 = new Music(19L,"Tzvi erez bach","Classical",0,"baby2");
       realm.copyToRealmOrUpdate(musicClassical5);
 
-   /* realm.executeTransaction(new Realm.Transaction() {
+    /*realm.executeTransaction(new Realm.Transaction() {
       @Override
       public void execute(Realm realm) {
         RealmResults<Music> result = realm.where(Music.class).equalTo(Music.ID,19L).findAll();
