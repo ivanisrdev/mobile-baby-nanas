@@ -86,6 +86,10 @@ public class MainActivity extends AppCompatActivity implements
                 Intent i = new Intent(MainActivity.this, MyPreferencesActivity.class);
                 startActivity(i);
                 return true;
+               case R.id.about:
+                   menuItem.setChecked(true);
+                  setContentView(R.layout.about);
+                   return true;
               default:
                 return true;
             }
