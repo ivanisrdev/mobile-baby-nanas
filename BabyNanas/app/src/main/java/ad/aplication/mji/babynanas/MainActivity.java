@@ -30,7 +30,6 @@ import com.example.jean.jcplayer.JcPlayerService;
 import com.example.jean.jcplayer.JcPlayerView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-
 import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
@@ -44,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements
   private static Realm realm;
   private DrawerLayout mDrawerLayout;
   private ViewPager viewPager;
-  private AdView mAdView;
 
 
   @Override
@@ -107,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements
     realm = Realm.getDefaultInstance();
 
     // afegim el ads
-    mAdView = (AdView) findViewById(R.id.adView);
+    AdView mAdView = (AdView) findViewById(R.id.adView);
     AdRequest adRequest = new AdRequest.Builder().build();
     mAdView.loadAd(adRequest);
   }
