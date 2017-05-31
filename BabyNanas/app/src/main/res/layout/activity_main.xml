@@ -53,8 +53,7 @@
         <com.example.jean.jcplayer.JcPlayerView
           android:id="@+id/jcPlayerView"
           android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:gravity="bottom"
+          android:layout_height="110dp"
           app:layout_constraintBottom_toTopOf="@+id/adView"
           app:layout_constraintHorizontal_bias="0.0"
           app:layout_constraintLeft_toLeftOf="parent"
