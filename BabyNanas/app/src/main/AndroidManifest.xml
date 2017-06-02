@@ -11,12 +11,15 @@
     android:theme="@style/AppTheme">
     <meta-data
       android:name="com.google.firebase.messaging.default_notification_icon"
-      android:resource="@drawable/ic_menu_relax" />
-    <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-         notification message. See README(https://goo.gl/6BKBk7) for more. -->
+      android:resource="@drawable/ic_menu_relax"/>
+    <!--
+         Set color used with incoming notification messages. This is used when no color is set for the incoming
+         notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
     <meta-data
       android:name="com.google.firebase.messaging.default_notification_color"
-      android:resource="@color/accent" />
+      android:resource="@color/accent"/>
+
     <activity android:name=".MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
@@ -28,18 +31,20 @@
       android:label="@string/title_activity_my_preferences"
       android:name=".MyPreferencesActivity">
     </activity>
-    <service
-      android:name=".MyFirebaseMessagingService">
+
+    <service android:name=".MyFirebaseMessagingService">
       <intent-filter>
         <action android:name="com.google.firebase.MESSAGING_EVENT"/>
       </intent-filter>
     </service>
-    <service
-      android:name=".MyFirebaseInstanceIDService">
+    <service android:name=".MyFirebaseInstanceIDService">
       <intent-filter>
         <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
       </intent-filter>
     </service>
+
+    <activity android:name=".AboutActivity">
+    </activity>
   </application>
 
 </manifest>

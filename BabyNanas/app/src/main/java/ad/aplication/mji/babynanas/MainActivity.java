@@ -69,9 +69,9 @@ public class MainActivity extends AppCompatActivity implements
             Toast.makeText(MainActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
             switch (menuItem.getItemId()) {
               case R.id.nanas_music:
-                  viewPager.setCurrentItem(0, true);
-                  menuItem.setChecked(true);
-                  return true;
+                viewPager.setCurrentItem(0, true);
+                menuItem.setChecked(true);
+                return true;
               case R.id.relax_music:
                 viewPager.setCurrentItem(1, true);
                 menuItem.setChecked(true);
@@ -84,10 +84,11 @@ public class MainActivity extends AppCompatActivity implements
                 Intent i = new Intent(MainActivity.this, MyPreferencesActivity.class);
                 startActivity(i);
                 return true;
-               case R.id.about:
-                   menuItem.setChecked(true);
-                  setContentView(R.layout.about);
-                   return true;
+              case R.id.about:
+                menuItem.setChecked(true);
+                Intent aboutIntent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(aboutIntent);
+                return true;
               default:
                 return true;
             }
@@ -215,7 +216,6 @@ public class MainActivity extends AppCompatActivity implements
     Toast.makeText(this, jcPlayerView.getCurrentAudio().getTitle(), Toast.LENGTH_SHORT)
         .show();
   }
-
 
 
   public static class MusicTypeFragment extends Fragment {
