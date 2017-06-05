@@ -31,6 +31,8 @@ import com.example.jean.jcplayer.JcPlayerService;
 import com.example.jean.jcplayer.JcPlayerView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+
+import ad.aplication.mji.babynanas.helper.AboutHelper;
 import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
@@ -88,6 +90,11 @@ public class MainActivity extends AppCompatActivity implements
                 menuItem.setChecked(true);
                 Intent aboutIntent = new Intent(MainActivity.this, AboutActivity.class);
                 startActivity(aboutIntent);
+                return true;
+              case R.id.about2:
+                menuItem.setChecked(true);
+                setContentView(R.layout.about2_view);
+                AboutHelper.with(MainActivity.this).init().loadAbout();
                 return true;
               default:
                 return true;
