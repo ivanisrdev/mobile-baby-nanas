@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -30,8 +31,6 @@ import com.example.jean.jcplayer.JcPlayerService;
 import com.example.jean.jcplayer.JcPlayerView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-
-import ad.aplication.mji.babynanas.helper.AboutHelper;
 import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
@@ -43,12 +42,11 @@ public class MainActivity extends AppCompatActivity implements
 
   private static JcPlayerView jcPlayerView;
   private static Realm realm;
+  private static ViewPager viewPager;
   private DrawerLayout mDrawerLayout;
-  private ViewPager viewPager;
-
 
   @Override
-  protected void onCreate(final Bundle savedInstanceState) {
+  protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.activity_main);
@@ -71,9 +69,9 @@ public class MainActivity extends AppCompatActivity implements
             Toast.makeText(MainActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
             switch (menuItem.getItemId()) {
               case R.id.nanas_music:
-                  viewPager.setCurrentItem(0, true);
-                  menuItem.setChecked(true);
-                  return true;
+                viewPager.setCurrentItem(0, true);
+                menuItem.setChecked(true);
+                return true;
               case R.id.relax_music:
                 viewPager.setCurrentItem(1, true);
                 menuItem.setChecked(true);
@@ -86,14 +84,10 @@ public class MainActivity extends AppCompatActivity implements
                 Intent i = new Intent(MainActivity.this, MyPreferencesActivity.class);
                 startActivity(i);
                 return true;
-               case R.id.about:
-                   menuItem.setChecked(true);
-                  setContentView(R.layout.about);
-                   return true;
-              case R.id.about2:
+              case R.id.about:
                 menuItem.setChecked(true);
-                setContentView(R.layout.about2_view);
-                AboutHelper.with(getParent()).init().loadAbout();
+                Intent aboutIntent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(aboutIntent);
                 return true;
               default:
                 return true;
@@ -109,7 +103,71 @@ public class MainActivity extends AppCompatActivity implements
     TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
     tabLayout.setupWithViewPager(viewPager);
 
+    viewPager.addOnPageChangeListener(new SimpleOnPageChangeListener() {
+      @Override
+      public void onPageSelected(int position) {
+        if (position == 0) {
+          RealmQuery<Music> query = realm.where(Music.class);
+          RealmResults<Music> resultsNana = query.equalTo(Music.TYPE, "Nana")
+              .findAll();
+          ArrayList<JcAudio> jcAudiosNana = new ArrayList<>();
+          for (int i = 0; i < resultsNana.size(); i++) {
+            jcAudiosNana.add(JcAudio.createFromAssets(resultsNana.get(i).getTitle(),
+                resultsNana.get(i).getTitle() + ".mp3"));
+          }
+          jcPlayerView.kill();
+          jcPlayerView.resetPlayerInfo();
+          jcPlayerView.initPlaylist(jcAudiosNana);
+          jcPlayerView.registerInvalidPathListener(MainActivity.this);
+        }
+
+        if (position == 1) {
+          RealmQuery<Music> query = realm.where(Music.class);
+          RealmResults<Music> resultsRelax = query.equalTo(Music.TYPE, "Relax")
+              .findAll();
+          ArrayList<JcAudio> jcAudiosRelax = new ArrayList<>();
+          for (int i = 0; i < resultsRelax.size(); i++) {
+            jcAudiosRelax.add(JcAudio.createFromAssets(resultsRelax.get(i).getTitle(),
+                resultsRelax.get(i).getTitle() + ".mp3"));
+          }
+          jcPlayerView.kill();
+          jcPlayerView.resetPlayerInfo();
+          jcPlayerView.initPlaylist(jcAudiosRelax);
+          jcPlayerView.registerInvalidPathListener(MainActivity.this);
+        }
+        if (position == 2) {
+          RealmQuery<Music> query = realm.where(Music.class);
+          RealmResults<Music> resultsClassical = query.equalTo(Music.TYPE, "Classical")
+              .findAll();
+          ArrayList<JcAudio> jcAudiosClassical = new ArrayList<>();
+          for (int i = 0; i < resultsClassical.size(); i++) {
+            jcAudiosClassical.add(JcAudio.createFromAssets(resultsClassical.get(i).getTitle(),
+                resultsClassical.get(i).getTitle() + ".mp3"));
+          }
+          jcPlayerView.kill();
+          jcPlayerView.resetPlayerInfo();
+          jcPlayerView.initPlaylist(jcAudiosClassical);
+          jcPlayerView.registerInvalidPathListener(MainActivity.this);
+        }
+
+        super.onPageSelected(position);
+      }
+    });
+
     realm = Realm.getDefaultInstance();
+
+    //load first tab music playlist
+    RealmQuery<Music> query = realm.where(Music.class);
+    RealmResults<Music> resultsNana = query.equalTo(Music.TYPE, "Nana")
+        .findAll();
+    ArrayList<JcAudio> jcAudiosNana = new ArrayList<>();
+    for (int i = 0; i < resultsNana.size(); i++) {
+      jcAudiosNana.add(JcAudio.createFromAssets(resultsNana.get(i).getTitle(),
+          resultsNana.get(i).getTitle() + ".mp3"));
+    }
+    jcPlayerView.resetPlayerInfo();
+    jcPlayerView.initPlaylist(jcAudiosNana);
+    jcPlayerView.registerInvalidPathListener(MainActivity.this);
 
     // afegim el ads
     AdView mAdView = (AdView) findViewById(R.id.adView);
@@ -148,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements
 
   @Override
   public void onPathError(JcAudio jcAudio) {
-    Toast.makeText(this, jcAudio.getPath() + " with problems", Toast.LENGTH_LONG).show();
+    Toast.makeText(this, jcAudio.getPath() + " with problems", Toast.LENGTH_SHORT).show();
 //        player.removeAudio(jcAudio);
 //        player.next();
   }
@@ -158,6 +216,7 @@ public class MainActivity extends AppCompatActivity implements
     Toast.makeText(this, jcPlayerView.getCurrentAudio().getTitle(), Toast.LENGTH_SHORT)
         .show();
   }
+
 
   public static class MusicTypeFragment extends Fragment {
 
@@ -181,9 +240,10 @@ public class MainActivity extends AppCompatActivity implements
 
       Bundle args = getArguments();
       int tabPosition = args.getInt(TAB_POSITION);
+
       if (tabPosition == 1) {
         RealmQuery<Music> query = realm.where(Music.class);
-        RealmResults<Music> results = query.equalTo(Music.TYPE, "Nana")
+        RealmResults<Music> resultsNana = query.equalTo(Music.TYPE, "Nana")
             .findAll();
         View v = inflater.inflate(R.layout.fragment_list_music, container, false);
         RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
@@ -195,23 +255,15 @@ public class MainActivity extends AppCompatActivity implements
         recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         MusicRecyclerAdapter musicRecyclerAdapter = new MusicRecyclerAdapter(
-            (MainActivity) getActivity(), results);
+            (MainActivity) getActivity(), resultsNana);
         recyclerView.setAdapter(musicRecyclerAdapter);
         //musicRecyclerAdapter.notifyDataSetChanged();
-
-        ArrayList<JcAudio> jcAudios = new ArrayList<>();
-        for (int i = 0; i < results.size(); i++) {
-          jcAudios.add(JcAudio.createFromAssets(results.get(i).getTitle(),
-              results.get(i).getTitle() + ".mp3"));
-        }
-        jcPlayerView.initPlaylist(jcAudios);
-        jcPlayerView.registerInvalidPathListener((MainActivity) getActivity());
 
         return v;
       } else {
         if (tabPosition == 2) {
           RealmQuery<Music> query = realm.where(Music.class);
-          RealmResults<Music> results = query.equalTo(Music.TYPE, "Relax")
+          RealmResults<Music> resultsRelax = query.equalTo(Music.TYPE, "Relax")
               .findAll();
           View v = inflater.inflate(R.layout.fragment_list_music, container, false);
           RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
@@ -223,23 +275,15 @@ public class MainActivity extends AppCompatActivity implements
           recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
           recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
           MusicRecyclerAdapter musicRecyclerAdapter = new MusicRecyclerAdapter(
-              (MainActivity) getActivity(), results);
+              (MainActivity) getActivity(), resultsRelax);
           recyclerView.setAdapter(musicRecyclerAdapter);
           //musicRecyclerAdapter.notifyDataSetChanged();
-
-          ArrayList<JcAudio> jcAudios = new ArrayList<>();
-          for (int i = 0; i < results.size(); i++) {
-            jcAudios.add(JcAudio.createFromAssets(results.get(i).getTitle(),
-                results.get(i).getTitle() + ".mp3"));
-          }
-          jcPlayerView.initPlaylist(jcAudios);
-          jcPlayerView.registerInvalidPathListener((MainActivity) getActivity());
 
           return v;
         } else {
           if (tabPosition == 3) {
             RealmQuery<Music> query = realm.where(Music.class);
-            RealmResults<Music> results = query.equalTo(Music.TYPE, "Classical")
+            RealmResults<Music> resultsClassical = query.equalTo(Music.TYPE, "Classical")
                 .findAll();
             View v = inflater.inflate(R.layout.fragment_list_music, container, false);
             RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
@@ -251,17 +295,9 @@ public class MainActivity extends AppCompatActivity implements
             recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
             recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
             MusicRecyclerAdapter musicRecyclerAdapter = new MusicRecyclerAdapter(
-                (MainActivity) getActivity(), results);
+                (MainActivity) getActivity(), resultsClassical);
             recyclerView.setAdapter(musicRecyclerAdapter);
             //musicRecyclerAdapter.notifyDataSetChanged();
-
-            ArrayList<JcAudio> jcAudios = new ArrayList<>();
-            for (int i = 0; i < results.size(); i++) {
-              jcAudios.add(JcAudio.createFromAssets(results.get(i).getTitle(),
-                  results.get(i).getTitle() + ".mp3"));
-            }
-            jcPlayerView.initPlaylist(jcAudios);
-            jcPlayerView.registerInvalidPathListener((MainActivity) getActivity());
 
             return v;
           }

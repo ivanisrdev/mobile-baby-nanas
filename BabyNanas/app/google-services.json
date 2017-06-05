@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "637667919264",
+    "firebase_url": "https://babynanas-6bd0d.firebaseio.com",
+    "project_id": "babynanas-6bd0d",
+    "storage_bucket": "babynanas-6bd0d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637667919264:android:0bb0f94dc764e9f3",
+        "android_client_info": {
+          "package_name": "ad.aplication.mji.babynanas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637667919264-k1ckd3uh8lfembhmlk2ghh7sbpl7fse9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtRGgJXwHINejMjZ9Xtqtu1hQ8JJvaT5M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
