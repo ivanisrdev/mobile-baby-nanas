@@ -30,6 +30,8 @@ import com.example.jean.jcplayer.JcPlayerService;
 import com.example.jean.jcplayer.JcPlayerView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+
+import ad.aplication.mji.babynanas.helper.AboutHelper;
 import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements
 
 
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.activity_main);
@@ -88,6 +90,11 @@ public class MainActivity extends AppCompatActivity implements
                    menuItem.setChecked(true);
                   setContentView(R.layout.about);
                    return true;
+              case R.id.about2:
+                menuItem.setChecked(true);
+                setContentView(R.layout.about2_view);
+                AboutHelper.with(getParent()).init().loadAbout();
+                return true;
               default:
                 return true;
             }
