@@ -1,6 +1,7 @@
 package ad.aplication.mji.babynanas;
 
 import ad.aplication.mji.babynanas.adapters.MusicRecyclerAdapter;
+import ad.aplication.mji.babynanas.helper.AboutHelper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
@@ -31,8 +32,6 @@ import com.example.jean.jcplayer.JcPlayerService;
 import com.example.jean.jcplayer.JcPlayerView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-
-import ad.aplication.mji.babynanas.helper.AboutHelper;
 import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;

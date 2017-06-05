@@ -6,8 +6,6 @@ import com.vansuita.materialabout.builder.AboutBuilder;
 import com.vansuita.materialabout.views.AboutView;
 import com.vansuita.materialabout.views.AutoFitGridLayout.LayoutParams;
 
-import ad.aplication.mji.babynanas.helper.AboutHelper;
-
 public class AboutActivity extends AppCompatActivity {
 
   @Override

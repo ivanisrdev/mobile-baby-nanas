@@ -51,7 +51,6 @@ dependencies {
     compile 'com.google.firebase:firebase-ads:10.2.6'
     compile 'com.github.jrvansuita:MaterialAbout:0.1.5'
     testCompile 'junit:junit:4.12'
-    compile 'com.github.jrvansuita:MaterialAbout:+'
 }
 
 apply plugin: 'com.google.gms.google-services'
