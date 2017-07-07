@@ -13,7 +13,7 @@ public class AboutActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
     AboutView view = AboutBuilder.with(this)
-        .setPhoto(R.mipmap.profile_picture)
+        .setPhoto(R.drawable.logo_mji)
         .setCover(R.mipmap.profile_cover)
         .setName("MJI Aplication")
         .setSubTitle("Creadores de sueños")
