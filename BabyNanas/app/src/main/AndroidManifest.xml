@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="ad.aplication.mji.babynanas">
 
+  <uses-permission android:name="android.permission.INTERNET"/>
+
   <application
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
@@ -19,6 +21,9 @@
     <meta-data
       android:name="com.google.firebase.messaging.default_notification_color"
       android:resource="@color/accent"/>
+    <meta-data
+      android:name="io.fabric.ApiKey"
+      android:value="a8cf5bd76407e05159ad6f36cc81dde26f99472a"/>
 
     <activity android:name=".MainActivity">
       <intent-filter>
@@ -45,10 +50,7 @@
 
     <activity android:name=".AboutActivity">
     </activity>
-      <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="a8cf5bd76407e05159ad6f36cc81dde26f99472a" />
-    </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
+  </application>
+
 </manifest>

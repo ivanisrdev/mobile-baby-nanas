@@ -19,16 +19,16 @@ public class AboutActivity extends AppCompatActivity {
         .setSubTitle("Creadores de sueños")
         .setBrief("Acercamos las Apps a quines lo necesiten.")
         .setAppIcon(R.mipmap.ic_launcher)
+        .setLinksColumnsCount(4)
+        .setDividerDashGap(13)
         .setAppName(R.string.app_name)
-        .addGooglePlayStoreLink("8002078663318221363")
-        .addGitHubLink("user")
-        .addFacebookLink("user")
         .addFiveStarsAction()
         .setVersionNameAsAppSubTitle()
         .addShareAction(R.string.app_name)
         .setWrapScrollView(true)
         .setLinksAnimated(true)
         .setShowAsCard(true)
+        .addFeedbackAction("mji.aplication@gmail.com")
         .build();
 
     addContentView(view, lp);

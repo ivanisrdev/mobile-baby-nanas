@@ -26,10 +26,6 @@
                 android:id="@+id/about"
                 android:icon="@android:drawable/ic_menu_help"
                 android:title="@string/about" />
-            <item
-                android:id="@+id/about2"
-                android:icon="@android:drawable/ic_menu_help"
-                android:title="@string/about" />
         </menu>
     </item>
 

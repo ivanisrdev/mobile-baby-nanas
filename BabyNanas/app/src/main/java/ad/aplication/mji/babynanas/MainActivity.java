@@ -1,7 +1,6 @@
 package ad.aplication.mji.babynanas;
 
 import ad.aplication.mji.babynanas.adapters.MusicRecyclerAdapter;
-import ad.aplication.mji.babynanas.helper.AboutHelper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
@@ -67,7 +66,6 @@ public class MainActivity extends AppCompatActivity implements
           @Override
           public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             mDrawerLayout.closeDrawers();
-            Toast.makeText(MainActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
             switch (menuItem.getItemId()) {
               case R.id.nanas_music:
                 viewPager.setCurrentItem(0, true);
@@ -90,11 +88,7 @@ public class MainActivity extends AppCompatActivity implements
                 Intent aboutIntent = new Intent(MainActivity.this, AboutActivity.class);
                 startActivity(aboutIntent);
                 return true;
-              case R.id.about2:
-                menuItem.setChecked(true);
-                setContentView(R.layout.about2_view);
-                AboutHelper.with(MainActivity.this).init().loadAbout();
-                return true;
+
               default:
                 return true;
             }
@@ -252,7 +246,7 @@ public class MainActivity extends AppCompatActivity implements
         RealmResults<Music> resultsNana = query.equalTo(Music.TYPE, "Nana")
             .findAll();
         View v = inflater.inflate(R.layout.fragment_list_music, container, false);
-        RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
         RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
         recyclerView.setItemAnimator(itemAnimator);
         recyclerView.setHasFixedSize(true);

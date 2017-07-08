@@ -1,18 +1,20 @@
 <resources>
   <string name="app_name" translatable="false">BabyNanas</string>
   <string name="drawer_header_text">Menu</string>
-  <string name="action_settings">Preferencies</string>
+  <string name="action_settings">Preferéncias</string>
   <string name="nanas">Nanas</string>
   <string name="relax">Relax</string>
-  <string name="classical">Classical</string>
+  <string name="classical">Clasica</string>
   <string name="configuration">Configuració</string>
-  <string name="about">About</string>
-  <string name="play_in_bucle">Reproducció continua</string>
-  <string name="play_in_bucle_summary">Aquesta opció si seleccionada permet que la musica soni permanentment en bucle.</string>
-  <string name="pref_reproduction">Preferéncies reprodució</string>
-  <string name="stop_play">Aturar la reproducció</string>
-  <string name="stop_play_summary">Selecciona durant quant temps vols reproduir la musica</string>
-  <string name="title_activity_my_preferences">Settings</string>
+  <string name="about">Sobre nosotrtos</string>
+  <string name="play_in_bucle">Reproducción continua</string>
+  <string name="play_in_bucle_summary">Esta opción si seleccionada permite que la música suene permanentemente en bucle.</string>
+  <string name="pref_reproduction">Preferencias reproducción reprodució</string>
+  <string name="stop_play">Parar la reproducción</string>
+  <string name="stop_play_summary">Selecciona durante cuanto tiempo quieres reproduir la música</string>
+  <string name="title_activity_my_preferences">Preférencias</string>
+  <string name="share_this_app">Compartir esta app</string>
+  <string name="feedback">Comparte tu feedback</string>
 
   <!-- Strings related to Settings -->
 
