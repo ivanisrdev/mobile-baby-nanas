@@ -266,7 +266,7 @@ public class MainActivity extends AppCompatActivity implements
           RealmResults<Music> resultsRelax = query.equalTo(Music.TYPE, "Relax")
               .findAll();
           View v = inflater.inflate(R.layout.fragment_list_music, container, false);
-          RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+          RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
           RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
           recyclerView.setItemAnimator(itemAnimator);
           recyclerView.setHasFixedSize(true);
@@ -286,7 +286,7 @@ public class MainActivity extends AppCompatActivity implements
             RealmResults<Music> resultsClassical = query.equalTo(Music.TYPE, "Classical")
                 .findAll();
             View v = inflater.inflate(R.layout.fragment_list_music, container, false);
-            RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+            RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
             RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
             recyclerView.setItemAnimator(itemAnimator);
             recyclerView.setHasFixedSize(true);

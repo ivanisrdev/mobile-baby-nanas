@@ -5,8 +5,8 @@
   <string name="nanas">Nanas</string>
   <string name="relax">Relax</string>
   <string name="classical">Clasica</string>
-  <string name="configuration">Configuració</string>
-  <string name="about">Sobre nosotrtos</string>
+  <string name="configuration">Configuración</string>
+  <string name="about">Sobre nosotros</string>
   <string name="play_in_bucle">Reproducción continua</string>
   <string name="play_in_bucle_summary">Esta opción si seleccionada permite que la música suene permanentemente en bucle.</string>
   <string name="pref_reproduction">Preferencias reproducción reprodució</string>
