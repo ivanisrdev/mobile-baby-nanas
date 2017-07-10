@@ -87,10 +87,13 @@
   <string name="pref_ringtone_silent">Silent</string>
 
   <string name="pref_title_vibrate">Vibrate</string>
-    <string name="dark_theme">dark</string>
-    <string name="light_theme">light</string>
-    <string name="custom_theme">custom</string>
-    <!-- banner real si el cliquem desde test google ens bloquejara compte-->
+  <string name="dark_theme">dark</string>
+  <string name="light_theme">light</string>
+  <string name="custom_theme">custom</string>
+  <string name="play_button" translatable="false">Play Button</string>
+  <string name="dream_makers">Creadores de sueños</string>
+  <string name="slogan">Acercamos las Apps a quines lo necesiten.</string>
+  <!-- banner real si el cliquem desde test google ens bloquejara compte-->
   <!--<string name="banner_ad_unit_id">ca-app-pub-9062394636198838/2033691508</string>-->
 
 </resources>
