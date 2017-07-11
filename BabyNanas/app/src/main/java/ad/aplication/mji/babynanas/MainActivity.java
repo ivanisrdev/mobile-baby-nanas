@@ -2,8 +2,11 @@ package ad.aplication.mji.babynanas;
 
 import ad.aplication.mji.babynanas.adapters.MusicRecyclerAdapter;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements
   private static Realm realm;
   private static ViewPager viewPager;
   private DrawerLayout mDrawerLayout;
+  private String stopPlayMusicIntervalPref;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -192,6 +196,17 @@ public class MainActivity extends AppCompatActivity implements
   }
 
   @Override
+  protected void onResume() {
+    super.onResume();
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+    stopPlayMusicIntervalPref = prefs.getString("stopPlay", "15");
+    int stopPlayerTimmer = Integer.valueOf(stopPlayMusicIntervalPref)*60000;
+    // Initialize the CountDownClass
+    CountDownTimer timer = new MyCountDown(10000, 1000);
+    timer.start();
+  }
+
+  @Override
   public void onPause() {
     super.onPause();
     jcPlayerView.createNotification();
@@ -216,7 +231,6 @@ public class MainActivity extends AppCompatActivity implements
     Toast.makeText(this, jcPlayerView.getCurrentAudio().getTitle(), Toast.LENGTH_SHORT)
         .show();
   }
-
 
   public static class MusicTypeFragment extends Fragment {
 
@@ -315,6 +329,25 @@ public class MainActivity extends AppCompatActivity implements
 
       // Load the preferences from an XML resource
       addPreferencesFromResource(R.xml.preferences);
+    }
+  }
+
+  // inner class
+  private class MyCountDown extends CountDownTimer {
+
+    public MyCountDown(long millisInFuture, long countDownInterval) {
+      super(millisInFuture, countDownInterval);
+    }
+
+    @Override
+    public void onFinish() {
+      Toast.makeText(getBaseContext(), "Stop Music", Toast.LENGTH_SHORT)
+          .show();
+      jcPlayerView.pause();
+    }
+
+    @Override
+    public void onTick(long duration) {
     }
   }
 
