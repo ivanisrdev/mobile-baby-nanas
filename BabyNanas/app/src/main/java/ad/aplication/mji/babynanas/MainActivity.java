@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements
     stopPlayMusicIntervalPref = prefs.getString("stopPlay", "15");
     int stopPlayerTimmer = Integer.valueOf(stopPlayMusicIntervalPref)*60000;
     // Initialize the CountDownClass
-    CountDownTimer timer = new MyCountDown(10000, 1000);
+    CountDownTimer timer = new MyCountDown(stopPlayerTimmer, 1000);
     timer.start();
   }
 
