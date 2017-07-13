@@ -3,6 +3,7 @@ package ad.aplication.mji.babynanas;
 import ad.aplication.mji.babynanas.adapters.MusicRecyclerAdapter;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceFragment;
@@ -25,6 +26,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements
   private static ViewPager viewPager;
   private DrawerLayout mDrawerLayout;
   private String stopPlayMusicIntervalPref;
+  private int stopPlayerTimmer;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -180,6 +184,13 @@ public class MainActivity extends AppCompatActivity implements
   }
 
   @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.mainmenu, menu);
+    return true;
+  }
+
+  @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     // Handle action bar item clicks here. The action bar will
     // automatically handle clicks on the Home/Up button, so long
@@ -190,6 +201,18 @@ public class MainActivity extends AppCompatActivity implements
       case android.R.id.home:
         mDrawerLayout.openDrawer(GravityCompat.START);
         return true;
+
+      case R.id.action_sleep:
+        int stopPlayerTimerMinutes = stopPlayerTimmer / 60000;
+        Resources res = getResources();
+        String message = String.format(res.getString(R.string.sleeping_message),stopPlayerTimerMinutes);
+        Toast.makeText(this, message, Toast.LENGTH_LONG)
+            .show();
+
+        // Initialize the CountDownClass
+        CountDownTimer timer = new MyCountDown(stopPlayerTimmer, 1000);
+        timer.start();
+        break;
     }
 
     return super.onOptionsItemSelected(item);
@@ -200,10 +223,7 @@ public class MainActivity extends AppCompatActivity implements
     super.onResume();
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
     stopPlayMusicIntervalPref = prefs.getString("stopPlay", "15");
-    int stopPlayerTimmer = Integer.valueOf(stopPlayMusicIntervalPref)*60000;
-    // Initialize the CountDownClass
-    CountDownTimer timer = new MyCountDown(stopPlayerTimmer, 1000);
-    timer.start();
+    stopPlayerTimmer = Integer.valueOf(stopPlayMusicIntervalPref)*60000;
   }
 
   @Override
