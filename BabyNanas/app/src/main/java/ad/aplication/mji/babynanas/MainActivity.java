@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements
   private static Realm realm;
   private static ViewPager viewPager;
   private DrawerLayout mDrawerLayout;
-  private String stopPlayMusicIntervalPref;
   private int stopPlayerTimmer;
 
   @Override
@@ -205,7 +204,8 @@ public class MainActivity extends AppCompatActivity implements
       case R.id.action_sleep:
         int stopPlayerTimerMinutes = stopPlayerTimmer / 60000;
         Resources res = getResources();
-        String message = String.format(res.getString(R.string.sleeping_message),stopPlayerTimerMinutes);
+        String message = String
+            .format(res.getString(R.string.sleeping_message), stopPlayerTimerMinutes);
         Toast.makeText(this, message, Toast.LENGTH_LONG)
             .show();
 
@@ -222,8 +222,8 @@ public class MainActivity extends AppCompatActivity implements
   protected void onResume() {
     super.onResume();
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-    stopPlayMusicIntervalPref = prefs.getString("stopPlay", "15");
-    stopPlayerTimmer = Integer.valueOf(stopPlayMusicIntervalPref)*60000;
+    String stopPlayMusicIntervalPref = prefs.getString("stopPlay", "15");
+    stopPlayerTimmer = Integer.valueOf(stopPlayMusicIntervalPref) * 60000;
   }
 
   @Override
@@ -355,7 +355,7 @@ public class MainActivity extends AppCompatActivity implements
   // inner class
   private class MyCountDown extends CountDownTimer {
 
-    public MyCountDown(long millisInFuture, long countDownInterval) {
+    MyCountDown(long millisInFuture, long countDownInterval) {
       super(millisInFuture, countDownInterval);
     }
 

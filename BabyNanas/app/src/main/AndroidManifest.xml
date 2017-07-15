@@ -6,6 +6,7 @@
 
   <application
     android:allowBackup="true"
+    android:fullBackupContent="true"
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
     android:name=".MyApplication"
@@ -25,7 +26,8 @@
       android:name="io.fabric.ApiKey"
       android:value="a8cf5bd76407e05159ad6f36cc81dde26f99472a"/>
 
-    <activity android:name=".MainActivity">
+    <activity android:configChanges="keyboardHidden|orientation"
+      android:name=".MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
