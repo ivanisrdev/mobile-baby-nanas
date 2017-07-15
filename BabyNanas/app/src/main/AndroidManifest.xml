@@ -26,12 +26,23 @@
       android:name="io.fabric.ApiKey"
       android:value="a8cf5bd76407e05159ad6f36cc81dde26f99472a"/>
 
-    <activity android:configChanges="keyboardHidden|orientation"
+    <activity
+      android:configChanges="keyboardHidden|orientation"
       android:name=".MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
         <category android:name="android.intent.category.LAUNCHER"/>
+
+        <action android:name="android.intent.action.VIEW"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+
+        <!-- Accepts URIs that begin with "java-lang-programming://android-app-google-plus-demo" -->
+        <data
+          android:host="java-lang-programming"
+          android:scheme="android-app-google-plus-demo"/>
       </intent-filter>
     </activity>
     <activity
@@ -39,12 +50,14 @@
       android:name=".MyPreferencesActivity">
     </activity>
 
-    <service android:name=".MyFirebaseMessagingService">
+    <service android:exported="false"
+      android:name=".MyFirebaseMessagingService">
       <intent-filter>
         <action android:name="com.google.firebase.MESSAGING_EVENT"/>
       </intent-filter>
     </service>
-    <service android:name=".MyFirebaseInstanceIDService">
+    <service android:exported="false"
+      android:name=".MyFirebaseInstanceIDService">
       <intent-filter>
         <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
       </intent-filter>

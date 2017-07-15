@@ -1,4 +1,6 @@
 <resources>
+  <!-- App id -->
+  <string name="google_app_id">1:637667919264:android:0bb0f94dc764e9f3</string>
   <string name="app_name" translatable="false">BabyNanas</string>
   <string name="drawer_header_text">Menu</string>
   <string name="action_settings">Preferéncias</string>
