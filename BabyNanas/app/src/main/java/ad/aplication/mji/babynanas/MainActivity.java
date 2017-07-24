@@ -114,14 +114,14 @@ public class MainActivity extends AppCompatActivity implements
       @Override
       public void onPageSelected(int position) {
         if (position == 0) {
-          RealmQuery<Music> query = realm.where(Music.class);
-          RealmResults<Music> resultsNana = query.equalTo(Music.TYPE, "Nana")
-              .findAll();
+          //RealmQuery<Music> query = realm.where(Music.class);
+          //RealmResults<Music> resultsNana = query.equalTo(Music.TYPE, "Nana")
+            //  .findAll();
           ArrayList<JcAudio> jcAudiosNana = new ArrayList<>();
-          for (int i = 0; i < resultsNana.size(); i++) {
-            jcAudiosNana.add(JcAudio.createFromAssets(resultsNana.get(i).getTitle(),
-                resultsNana.get(i).getTitle() + ".mp3"));
-          }
+          //for (int i = 0; i < resultsNana.size(); i++) {
+            //jcAudiosNana.add(JcAudio.createFromAssets(resultsNana.get(i).getTitle(),
+              //  resultsNana.get(i).getTitle() + ".mp3"));
+          //}
           jcPlayerView.kill();
           jcPlayerView.resetPlayerInfo();
           jcPlayerView.initPlaylist(jcAudiosNana);
@@ -129,28 +129,28 @@ public class MainActivity extends AppCompatActivity implements
         }
 
         if (position == 1) {
-          RealmQuery<Music> query = realm.where(Music.class);
-          RealmResults<Music> resultsRelax = query.equalTo(Music.TYPE, "Relax")
-              .findAll();
+         /// RealmQuery<Music> query = realm.where(Music.class);
+          //RealmResults<Music> resultsRelax = query.equalTo(Music.TYPE, "Relax")
+            //  .findAll();
           ArrayList<JcAudio> jcAudiosRelax = new ArrayList<>();
-          for (int i = 0; i < resultsRelax.size(); i++) {
-            jcAudiosRelax.add(JcAudio.createFromAssets(resultsRelax.get(i).getTitle(),
-                resultsRelax.get(i).getTitle() + ".mp3"));
-          }
+          //for (int i = 0; i < resultsRelax.size(); i++) {
+            //jcAudiosRelax.add(JcAudio.createFromAssets(resultsRelax.get(i).getTitle(),
+              ///  resultsRelax.get(i).getTitle() + ".mp3"));
+          //}
           jcPlayerView.kill();
           jcPlayerView.resetPlayerInfo();
           jcPlayerView.initPlaylist(jcAudiosRelax);
           jcPlayerView.registerInvalidPathListener(MainActivity.this);
         }
         if (position == 2) {
-          RealmQuery<Music> query = realm.where(Music.class);
+          /*RealmQuery<Music> query = realm.where(Music.class);
           RealmResults<Music> resultsClassical = query.equalTo(Music.TYPE, "Classical")
-              .findAll();
+              .findAll();*/
           ArrayList<JcAudio> jcAudiosClassical = new ArrayList<>();
-          for (int i = 0; i < resultsClassical.size(); i++) {
+          /*for (int i = 0; i < resultsClassical.size(); i++) {
             jcAudiosClassical.add(JcAudio.createFromAssets(resultsClassical.get(i).getTitle(),
                 resultsClassical.get(i).getTitle() + ".mp3"));
-          }
+          }*/
           jcPlayerView.kill();
           jcPlayerView.resetPlayerInfo();
           jcPlayerView.initPlaylist(jcAudiosClassical);
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements
     realm = Realm.getDefaultInstance();
 
     //load first tab music playlist
-    RealmQuery<Music> query = realm.where(Music.class);
+    /*RealmQuery<Music> query = realm.where(Music.class);
     RealmResults<Music> resultsNana = query.equalTo(Music.TYPE, "Nana")
         .findAll();
     ArrayList<JcAudio> jcAudiosNana = new ArrayList<>();
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements
     }
     jcPlayerView.resetPlayerInfo();
     jcPlayerView.initPlaylist(jcAudiosNana);
-    jcPlayerView.registerInvalidPathListener(MainActivity.this);
+    jcPlayerView.registerInvalidPathListener(MainActivity.this);*/
 
     // afegim el ads
     AdView mAdView = findViewById(R.id.adView);
@@ -224,6 +224,10 @@ public class MainActivity extends AppCompatActivity implements
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
     String stopPlayMusicIntervalPref = prefs.getString("stopPlay", "15");
     stopPlayerTimer = Integer.valueOf(stopPlayMusicIntervalPref) * 60000;
+    ArrayList<JcAudio> jcAudiosNana = new ArrayList<>();
+    jcPlayerView.resetPlayerInfo();
+    jcPlayerView.initPlaylist(jcAudiosNana);
+    jcPlayerView.registerInvalidPathListener(MainActivity.this);
   }
 
   @Override
@@ -247,6 +251,7 @@ public class MainActivity extends AppCompatActivity implements
   }
 
   public void playAudio(JcAudio jcAudio) {
+    jcPlayerView.removeAudio(jcPlayerView.getCurrentAudio());
     jcPlayerView.playAudio(jcAudio);
     Toast.makeText(this, jcPlayerView.getCurrentAudio().getTitle(), Toast.LENGTH_SHORT)
         .show();
