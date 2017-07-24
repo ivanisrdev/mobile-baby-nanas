@@ -39,7 +39,6 @@ public class MusicRecyclerAdapter  extends RecyclerView.Adapter<MusicRecyclerAda
   public void onBindViewHolder(ViewHolder viewHolder, int i) {
     final Music item = mItems.get(i);
     viewHolder.mTextView.setText(item.getTitle());
-    //TODO ad image dynamically
     Resources resources = mActivity.getApplication().getResources();
     final int resourceId = resources.getIdentifier(item.getImageName(), "drawable",
             mActivity.getApplication().getPackageName());

@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements
   private static Realm realm;
   private static ViewPager viewPager;
   private DrawerLayout mDrawerLayout;
-  private int stopPlayerTimmer;
+  private int stopPlayerTimer;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -58,16 +58,16 @@ public class MainActivity extends AppCompatActivity implements
 
     setContentView(R.layout.activity_main);
 
-    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
     ActionBar actionBar = getSupportActionBar();
     assert actionBar != null;
     actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
     actionBar.setDisplayHomeAsUpEnabled(true);
 
-    mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+    mDrawerLayout =  findViewById(R.id.drawer_layout);
 
-    NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+    NavigationView navigationView = findViewById(R.id.navigation_view);
     navigationView
         .setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
           @Override
@@ -102,12 +102,12 @@ public class MainActivity extends AppCompatActivity implements
           }
         });
 
-    jcPlayerView = (JcPlayerView) findViewById(R.id.jcPlayerView);
+    jcPlayerView = findViewById(R.id.jcPlayerView);
 
     MusicTypePagerAdapter adapter = new MusicTypePagerAdapter(getSupportFragmentManager());
-    viewPager = (ViewPager) findViewById(R.id.viewpager);
+    viewPager = findViewById(R.id.viewpager);
     viewPager.setAdapter(adapter);
-    TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+    TabLayout tabLayout = findViewById(R.id.tabLayout);
     tabLayout.setupWithViewPager(viewPager);
 
     viewPager.addOnPageChangeListener(new SimpleOnPageChangeListener() {
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements
     jcPlayerView.registerInvalidPathListener(MainActivity.this);
 
     // afegim el ads
-    AdView mAdView = (AdView) findViewById(R.id.adView);
+    AdView mAdView = findViewById(R.id.adView);
     AdRequest adRequest = new AdRequest.Builder().build();
     mAdView.loadAd(adRequest);
   }
@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements
         return true;
 
       case R.id.action_sleep:
-        int stopPlayerTimerMinutes = stopPlayerTimmer / 60000;
+        int stopPlayerTimerMinutes = stopPlayerTimer / 60000;
         Resources res = getResources();
         String message = String
             .format(res.getString(R.string.sleeping_message), stopPlayerTimerMinutes);
@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity implements
             .show();
 
         // Initialize the CountDownClass
-        CountDownTimer timer = new MyCountDown(stopPlayerTimmer, 1000);
+        CountDownTimer timer = new MyCountDown(stopPlayerTimer, 1000);
         timer.start();
         break;
     }
@@ -223,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements
     super.onResume();
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
     String stopPlayMusicIntervalPref = prefs.getString("stopPlay", "15");
-    stopPlayerTimmer = Integer.valueOf(stopPlayMusicIntervalPref) * 60000;
+    stopPlayerTimer = Integer.valueOf(stopPlayMusicIntervalPref) * 60000;
   }
 
   @Override
