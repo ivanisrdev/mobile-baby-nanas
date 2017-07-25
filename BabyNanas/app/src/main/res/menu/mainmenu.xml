@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item
+      android:id="@+id/action_repeat"
+      android:actionProviderClass="@string/play_in_bucle"
+      android:actionViewClass="@string/play_in_bucle"
+      android:checkable="true"
+      android:defaultValue="false"
+      android:enabled="true"
+      android:icon="@drawable/ic_action_repeat"
+      android:key="bucle"
+      android:title="@string/play_in_bucle"
+      android:visible="true"
+      app:showAsAction="always"
+      tools:onClick="@string/play_in_bucle" />
 
   <item
     android:id="@+id/action_sleep"
     android:icon="@drawable/ic_action_sleep"
-    android:title="@string/sleep_countdown"
+    android:title="Sleep"
     app:showAsAction="always"/>
 </menu>

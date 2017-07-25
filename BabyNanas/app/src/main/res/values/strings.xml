@@ -97,7 +97,8 @@
   <string name="slogan">Acercamos las Apps a quines lo necesiten.</string>
   <string name="sleep_countdown">Sleep</string>
   <string name="sleeping_message">La música se parará en %1$d minutos</string>
-  <!-- banner real si el cliquem desde test google ens bloquejara compte-->
+    <string name="repeat">repeat</string>
+    <!-- banner real si el cliquem desde test google ens bloquejara compte-->
   <!--<string name="banner_ad_unit_id">ca-app-pub-9062394636198838/2033691508</string>-->
 
 </resources>
