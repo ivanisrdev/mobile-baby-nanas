@@ -2,11 +2,11 @@
   <!-- App id -->
   <string name="google_app_id">1:637667919264:android:0bb0f94dc764e9f3</string>
   <string name="app_name" translatable="false">BabyNanas</string>
-  <string name="drawer_header_text">Menu</string>
+  <string name="drawer_header_text">Menú</string>
   <string name="action_settings">Preferéncias</string>
   <string name="nanas">Nanas</string>
   <string name="relax">Relax</string>
-  <string name="classical">Clasica</string>
+  <string name="classical">Clásica</string>
   <string name="configuration">Configuración</string>
   <string name="about">Sobre nosotros</string>
   <string name="play_in_bucle">Reproducción continua</string>
