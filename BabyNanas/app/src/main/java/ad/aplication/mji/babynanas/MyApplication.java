@@ -110,12 +110,12 @@ public class MyApplication extends Application {
       //realm.copyToRealmOrUpdate(musicClassical1);
       Music musicClassical7 = new Music(27L,"Bach Adagio","Classical",0,"baby3");
       realm.copyToRealmOrUpdate(musicClassical7);
-      Music musicClassical2 = new Music(16L, "Chopin Nocturne", "Classical", 0, "baby11");
-      realm.copyToRealmOrUpdate(musicClassical2);
-      Music musicClassical3 = new Music(17L, "Schubert Impromptu", "Classical", 0, "baby13");
-      realm.copyToRealmOrUpdate(musicClassical3);
-      Music musicClassical4 = new Music(18L, "Schubert Ave Maria", "Classical", 0, "baby14");
-      realm.copyToRealmOrUpdate(musicClassical4);
+      //Music musicClassical2 = new Music(16L, "Chopin Nocturne", "Classical", 0, "baby11");
+      //realm.copyToRealmOrUpdate(musicClassical2);
+      //Music musicClassical3 = new Music(17L, "Schubert Impromptu", "Classical", 0, "baby13");
+      //realm.copyToRealmOrUpdate(musicClassical3);
+      //Music musicClassical4 = new Music(18L, "Schubert Ave Maria", "Classical", 0, "baby14");
+      //realm.copyToRealmOrUpdate(musicClassical4);
       Music musicClassical5 = new Music(19L, "Tchaikovsky Song Words", "Classical", 0, "baby2");
       realm.copyToRealmOrUpdate(musicClassical5);
       Music musicClassical6 = new Music(26L,"Tchaikovsky Valse Sentimentale","Classical",0,"baby9");
