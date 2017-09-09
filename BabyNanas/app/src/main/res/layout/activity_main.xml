@@ -78,6 +78,13 @@
       <!--ca-app-pub-9062394636198838/2033691508 -es el real -->
       <!--ca-app-pub-3940256099942544/6300978111 -es el debug -->
     </com.google.android.gms.ads.AdView>
+    <Button
+      android:id="@+id/playAudio"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Button"
+      tools:layout_editor_absoluteX="0dp"
+      tools:layout_editor_absoluteY="610dp"/>
 
   </android.support.constraint.ConstraintLayout>
 

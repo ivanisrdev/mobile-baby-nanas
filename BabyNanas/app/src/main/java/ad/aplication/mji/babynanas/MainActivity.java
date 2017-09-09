@@ -4,6 +4,7 @@ import ad.aplication.mji.babynanas.adapters.MusicRecyclerAdapter;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceFragment;
@@ -31,6 +32,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 import com.example.jean.jcplayer.JcAudio;
 import com.example.jean.jcplayer.JcPlayerService;
@@ -52,11 +54,33 @@ public class MainActivity extends AppCompatActivity implements
   private DrawerLayout mDrawerLayout;
   private int stopPlayerTimer;
 
+  private MediaPlayer mediaPlayer;
+  private int length;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.activity_main);
+
+    Button b = findViewById(R.id.playAudio);
+    b.setOnClickListener(new View.OnClickListener() {
+
+      @Override
+      public void onClick(View v) {
+        if(mediaPlayer != null && mediaPlayer.isPlaying()){
+          //stopPlaying();
+          mediaPlayer.pause();
+          length = mediaPlayer.getCurrentPosition();
+        } else {
+          mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.test);
+          mediaPlayer.seekTo(length);
+          mediaPlayer.setLooping(true);
+          mediaPlayer.start();
+        }
+      }
+
+    });
 
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
@@ -255,6 +279,14 @@ public class MainActivity extends AppCompatActivity implements
     jcPlayerView.playAudio(jcAudio);
     Toast.makeText(this, jcPlayerView.getCurrentAudio().getTitle(), Toast.LENGTH_SHORT)
         .show();
+  }
+
+  private void stopPlaying() {
+    if (mediaPlayer != null) {
+      mediaPlayer.stop();
+      mediaPlayer.release();
+      mediaPlayer = null;
+    }
   }
 
   public static class MusicTypeFragment extends Fragment {
