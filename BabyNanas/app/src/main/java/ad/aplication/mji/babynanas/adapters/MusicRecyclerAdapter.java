@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
-import com.example.jean.jcplayer.JcAudio;
 import io.realm.RealmResults;
+import java.io.IOException;
 import realmBD.Music;
 
 /**
@@ -49,7 +49,12 @@ public class MusicRecyclerAdapter  extends RecyclerView.Adapter<MusicRecyclerAda
     viewHolder.mImagePlayView.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        mActivity.playAudio(JcAudio.createFromAssets(item.getTitle(), item.getTitle()+".mp3"));
+        //mActivity.playAudio(JcAudio.createFromAssets(item.getTitle(), item.getTitle()+".mp3"));
+        try {
+          mActivity.playOrPauseMusic(item);
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
       }
     });
   }
@@ -67,9 +72,9 @@ public class MusicRecyclerAdapter  extends RecyclerView.Adapter<MusicRecyclerAda
 
     ViewHolder(View v) {
       super(v);
-      mTextView = (TextView) v.findViewById(R.id.info_text);
-      mImageView = (ImageView) v.findViewById(R.id.image_music);
-      mImagePlayView = (ImageView) v.findViewById(R.id.image_play);
+      mTextView = v.findViewById(R.id.info_text);
+      mImageView = v.findViewById(R.id.image_music);
+      mImagePlayView = v.findViewById(R.id.image_play);
     }
   }
 }

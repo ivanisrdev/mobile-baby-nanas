@@ -3,6 +3,7 @@ package ad.aplication.mji.babynanas;
 import ad.aplication.mji.babynanas.adapters.MusicRecyclerAdapter;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetFileDescriptor;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -32,55 +33,32 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 import com.example.jean.jcplayer.JcAudio;
-import com.example.jean.jcplayer.JcPlayerService;
-import com.example.jean.jcplayer.JcPlayerView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
+import java.io.IOException;
 import java.util.ArrayList;
 import realmBD.Music;
 
-public class MainActivity extends AppCompatActivity implements
-    JcPlayerService.OnInvalidPathListener {
+public class MainActivity extends AppCompatActivity  {
 
-  private static JcPlayerView jcPlayerView;
   private static Realm realm;
   private static ViewPager viewPager;
   private DrawerLayout mDrawerLayout;
   private int stopPlayerTimer;
-
   private MediaPlayer mediaPlayer;
   private int length;
+  private long itemPosition = -1;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.activity_main);
-
-    Button b = findViewById(R.id.playAudio);
-    b.setOnClickListener(new View.OnClickListener() {
-
-      @Override
-      public void onClick(View v) {
-        if(mediaPlayer != null && mediaPlayer.isPlaying()){
-          //stopPlaying();
-          mediaPlayer.pause();
-          length = mediaPlayer.getCurrentPosition();
-        } else {
-          mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.test);
-          mediaPlayer.seekTo(length);
-          mediaPlayer.setLooping(true);
-          mediaPlayer.start();
-        }
-      }
-
-    });
 
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
@@ -125,9 +103,6 @@ public class MainActivity extends AppCompatActivity implements
             }
           }
         });
-
-    jcPlayerView = findViewById(R.id.jcPlayerView);
-
     MusicTypePagerAdapter adapter = new MusicTypePagerAdapter(getSupportFragmentManager());
     viewPager = findViewById(R.id.viewpager);
     viewPager.setAdapter(adapter);
@@ -146,10 +121,6 @@ public class MainActivity extends AppCompatActivity implements
             //jcAudiosNana.add(JcAudio.createFromAssets(resultsNana.get(i).getTitle(),
               //  resultsNana.get(i).getTitle() + ".mp3"));
           //}
-          jcPlayerView.kill();
-          jcPlayerView.resetPlayerInfo();
-          jcPlayerView.initPlaylist(jcAudiosNana);
-          jcPlayerView.registerInvalidPathListener(MainActivity.this);
         }
 
         if (position == 1) {
@@ -161,10 +132,7 @@ public class MainActivity extends AppCompatActivity implements
             //jcAudiosRelax.add(JcAudio.createFromAssets(resultsRelax.get(i).getTitle(),
               ///  resultsRelax.get(i).getTitle() + ".mp3"));
           //}
-          jcPlayerView.kill();
-          jcPlayerView.resetPlayerInfo();
-          jcPlayerView.initPlaylist(jcAudiosRelax);
-          jcPlayerView.registerInvalidPathListener(MainActivity.this);
+
         }
         if (position == 2) {
           /*RealmQuery<Music> query = realm.where(Music.class);
@@ -175,10 +143,6 @@ public class MainActivity extends AppCompatActivity implements
             jcAudiosClassical.add(JcAudio.createFromAssets(resultsClassical.get(i).getTitle(),
                 resultsClassical.get(i).getTitle() + ".mp3"));
           }*/
-          jcPlayerView.kill();
-          jcPlayerView.resetPlayerInfo();
-          jcPlayerView.initPlaylist(jcAudiosClassical);
-          jcPlayerView.registerInvalidPathListener(MainActivity.this);
         }
 
         super.onPageSelected(position);
@@ -248,37 +212,46 @@ public class MainActivity extends AppCompatActivity implements
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
     String stopPlayMusicIntervalPref = prefs.getString("stopPlay", "15");
     stopPlayerTimer = Integer.valueOf(stopPlayMusicIntervalPref) * 60000;
-    ArrayList<JcAudio> jcAudiosNana = new ArrayList<>();
-    jcPlayerView.resetPlayerInfo();
-    jcPlayerView.initPlaylist(jcAudiosNana);
-    jcPlayerView.registerInvalidPathListener(MainActivity.this);
   }
 
   @Override
   public void onPause() {
     super.onPause();
-    jcPlayerView.createNotification();
   }
 
   @Override
   protected void onDestroy() {
     super.onDestroy();
-    jcPlayerView.kill();
+    stopPlaying();
     realm.close();
   }
 
-  @Override
-  public void onPathError(JcAudio jcAudio) {
-    Toast.makeText(this, jcAudio.getPath() + " with problems", Toast.LENGTH_SHORT).show();
-//        player.removeAudio(jcAudio);
-//        player.next();
+  public void playOrPauseMusic(Music item) throws IOException {
+    if (item.getId() == itemPosition) {
+      if(mediaPlayer != null && mediaPlayer.isPlaying()){
+        mediaPlayer.pause();
+        length = mediaPlayer.getCurrentPosition();
+      } else {
+        playMusic(item);
+      }
+    } else {
+      itemPosition = item.getId();
+      stopPlaying();
+      playMusic(item);
+    }
   }
 
-  public void playAudio(JcAudio jcAudio) {
-    jcPlayerView.removeAudio(jcPlayerView.getCurrentAudio());
-    jcPlayerView.playAudio(jcAudio);
-    Toast.makeText(this, jcPlayerView.getCurrentAudio().getTitle(), Toast.LENGTH_SHORT)
-        .show();
+  private void playMusic(Music item) throws IOException {
+    AssetFileDescriptor descriptor;
+    mediaPlayer = new MediaPlayer();
+    descriptor = this.getAssets().openFd(item.getTitle()+".mp3");
+    mediaPlayer.setDataSource(descriptor.getFileDescriptor(), descriptor.getStartOffset(),descriptor.getLength());
+    descriptor.close();
+    mediaPlayer.prepare();
+    mediaPlayer.seekTo(length);
+    mediaPlayer.setLooping(true);
+    mediaPlayer.setVolume(1f, 1f);
+    mediaPlayer.start();
   }
 
   private void stopPlaying() {
@@ -288,6 +261,7 @@ public class MainActivity extends AppCompatActivity implements
       mediaPlayer = null;
     }
   }
+
 
   public static class MusicTypeFragment extends Fragment {
 
@@ -400,7 +374,7 @@ public class MainActivity extends AppCompatActivity implements
     public void onFinish() {
       Toast.makeText(getBaseContext(), "Stop Music", Toast.LENGTH_SHORT)
           .show();
-      jcPlayerView.pause();
+      stopPlaying();
     }
 
     @Override
