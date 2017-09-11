@@ -106,7 +106,7 @@ public class MyApplication extends Application {
       realm.copyToRealmOrUpdate(musicRelax8);
 
       // Add a music type Classical
-      Music musicClassical1 = new Music(50L, "Bach Prelude", "Classical", 0, "baby10");
+      Music musicClassical1 = new Music(50L, "Bach_Prelude", "Classical", 0, "baby10");
       realm.copyToRealmOrUpdate(musicClassical1);
       Music musicClassical7 = new Music(27L,"Bach Adagio","Classical",0,"baby3");
       realm.copyToRealmOrUpdate(musicClassical7);
