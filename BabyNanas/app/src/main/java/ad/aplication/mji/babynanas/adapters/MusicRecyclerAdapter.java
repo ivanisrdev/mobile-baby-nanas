@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.ohoussein.playpause.PlayPauseView;
 import io.realm.RealmResults;
 import java.io.IOException;
 import realmBD.Music;
@@ -23,6 +24,7 @@ public class MusicRecyclerAdapter  extends RecyclerView.Adapter<MusicRecyclerAda
 
   private RealmResults<Music> mItems;
   private MainActivity mActivity;
+  private boolean isPlaying = false;
 
   public MusicRecyclerAdapter(MainActivity activity, RealmResults<Music> items) {
     mItems = items;
@@ -36,7 +38,7 @@ public class MusicRecyclerAdapter  extends RecyclerView.Adapter<MusicRecyclerAda
   }
 
   @Override
-  public void onBindViewHolder(ViewHolder viewHolder, int i) {
+  public void onBindViewHolder(final ViewHolder viewHolder, int i) {
     final Music item = mItems.get(i);
     viewHolder.mTextView.setText(item.getTitle());
     Resources resources = mActivity.getApplication().getResources();
@@ -45,13 +47,19 @@ public class MusicRecyclerAdapter  extends RecyclerView.Adapter<MusicRecyclerAda
     Glide.with(mActivity)
         .load(resourceId)
         .into(viewHolder.mImageView);
-    //viewHolder.mImageView.setImageDrawable(ContextCompat.getDrawable(mActivity, resourceId));
+    //viewHolder.mImagePlayView.setImageResource(R.drawable.ic_play_circle_outline_white_24dp);
     viewHolder.mImagePlayView.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
         //mActivity.playAudio(JcAudio.createFromAssets(item.getTitle(), item.getTitle()+".mp3"));
+        viewHolder.mImagePlayView.toggle(true);
         try {
-          mActivity.playOrPauseMusic(item);
+          isPlaying = mActivity.playOrPauseMusic(item);
+          /*if (isPlaying) {
+            viewHolder.mImagePlayView.setImageResource(R.drawable.ic_pause_circle_outline_white_24dp);
+          } else {
+            viewHolder.mImagePlayView.setImageResource(R.drawable.ic_play_circle_outline_white_24dp);
+          }*/
         } catch (IOException e) {
           e.printStackTrace();
         }
@@ -64,11 +72,11 @@ public class MusicRecyclerAdapter  extends RecyclerView.Adapter<MusicRecyclerAda
     return mItems.size();
   }
 
-  public class ViewHolder extends RecyclerView.ViewHolder {
+  class ViewHolder extends RecyclerView.ViewHolder {
 
     private final TextView mTextView;
     private final ImageView mImageView;
-    private final ImageView mImagePlayView;
+    private final PlayPauseView mImagePlayView;
 
     ViewHolder(View v) {
       super(v);

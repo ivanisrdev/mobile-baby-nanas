@@ -44,7 +44,7 @@
       app:layout_constraintRight_toLeftOf="@+id/image_play"
       app:layout_constraintTop_toBottomOf="@+id/image_music"/>
 
-    <ImageView
+    <com.ohoussein.playpause.PlayPauseView
       android:id="@+id/image_play"
       android:layout_width="30dp"
       android:layout_height="30dp"
@@ -54,10 +54,13 @@
       android:clickable="true"
       android:contentDescription="@string/play_button"
       android:focusable="true"
-      android:src="@drawable/ic_play_circle_outline_white_24dp"
+
+      app:fill_color="#e1e1e1"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/image_music"/>
+      app:layout_constraintTop_toBottomOf="@+id/image_music"
+      app:pause_bg="@color/primary"
+      app:play_bg="@color/primary" />
 
   </android.support.constraint.ConstraintLayout>
 

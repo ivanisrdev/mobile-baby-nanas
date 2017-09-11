@@ -226,18 +226,21 @@ public class MainActivity extends AppCompatActivity  {
     realm.close();
   }
 
-  public void playOrPauseMusic(Music item) throws IOException {
+  public boolean playOrPauseMusic(Music item) throws IOException {
     if (item.getId() == itemPosition) {
       if(mediaPlayer != null && mediaPlayer.isPlaying()){
         mediaPlayer.pause();
         length = mediaPlayer.getCurrentPosition();
+        return false;
       } else {
         playMusic(item);
+        return true;
       }
     } else {
       itemPosition = item.getId();
       stopPlaying();
       playMusic(item);
+      return true;
     }
   }
 
