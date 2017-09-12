@@ -25,6 +25,7 @@ public class MusicRecyclerAdapter  extends RecyclerView.Adapter<MusicRecyclerAda
   private RealmResults<Music> mItems;
   private MainActivity mActivity;
   private boolean isPlaying = false;
+  private ViewHolder holderOld;
 
   public MusicRecyclerAdapter(MainActivity activity, RealmResults<Music> items) {
     mItems = items;
@@ -48,11 +49,20 @@ public class MusicRecyclerAdapter  extends RecyclerView.Adapter<MusicRecyclerAda
         .load(resourceId)
         .into(viewHolder.mImageView);
     //viewHolder.mImagePlayView.setImageResource(R.drawable.ic_play_circle_outline_white_24dp);
+
     viewHolder.mImagePlayView.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
         //mActivity.playAudio(JcAudio.createFromAssets(item.getTitle(), item.getTitle()+".mp3"));
         viewHolder.mImagePlayView.toggle(true);
+        if (holderOld != null) {
+          if (!holderOld.mTextView.getText().equals(viewHolder.mTextView.getText())) {
+            holderOld.mImagePlayView.change(true);
+          }
+        }
+
+        holderOld = viewHolder;
+
         try {
           isPlaying = mActivity.playOrPauseMusic(item);
           /*if (isPlaying) {
@@ -76,7 +86,7 @@ public class MusicRecyclerAdapter  extends RecyclerView.Adapter<MusicRecyclerAda
 
     private final TextView mTextView;
     private final ImageView mImageView;
-    private final PlayPauseView mImagePlayView;
+    private PlayPauseView mImagePlayView;
 
     ViewHolder(View v) {
       super(v);
