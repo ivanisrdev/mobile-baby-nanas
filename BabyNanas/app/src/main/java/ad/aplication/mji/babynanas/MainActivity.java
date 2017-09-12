@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity  {
         });
     MusicTypePagerAdapter adapter = new MusicTypePagerAdapter(getSupportFragmentManager());
     viewPager = findViewById(R.id.viewpager);
+    viewPager.setOffscreenPageLimit(2);
     viewPager.setAdapter(adapter);
     TabLayout tabLayout = findViewById(R.id.tabLayout);
     tabLayout.setupWithViewPager(viewPager);
