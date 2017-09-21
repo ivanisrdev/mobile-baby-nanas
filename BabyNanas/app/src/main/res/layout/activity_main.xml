@@ -55,7 +55,7 @@
       android:id="@+id/adView"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
-      ads:adSize="BANNER"
+      ads:adSize="SMART_BANNER"
       ads:adUnitId="ca-app-pub-9062394636198838/2033691508"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
