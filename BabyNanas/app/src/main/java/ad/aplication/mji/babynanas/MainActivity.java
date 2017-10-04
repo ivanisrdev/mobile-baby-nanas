@@ -34,14 +34,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import com.example.jean.jcplayer.JcAudio;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import java.io.IOException;
-import java.util.ArrayList;
 import realmBD.Music;
 
 public class MainActivity extends AppCompatActivity  {
@@ -117,7 +115,7 @@ public class MainActivity extends AppCompatActivity  {
           //RealmQuery<Music> query = realm.where(Music.class);
           //RealmResults<Music> resultsNana = query.equalTo(Music.TYPE, "Nana")
             //  .findAll();
-          ArrayList<JcAudio> jcAudiosNana = new ArrayList<>();
+          //ArrayList<JcAudio> jcAudiosNana = new ArrayList<>();
           //for (int i = 0; i < resultsNana.size(); i++) {
             //jcAudiosNana.add(JcAudio.createFromAssets(resultsNana.get(i).getTitle(),
               //  resultsNana.get(i).getTitle() + ".mp3"));
@@ -128,7 +126,7 @@ public class MainActivity extends AppCompatActivity  {
          /// RealmQuery<Music> query = realm.where(Music.class);
           //RealmResults<Music> resultsRelax = query.equalTo(Music.TYPE, "Relax")
             //  .findAll();
-          ArrayList<JcAudio> jcAudiosRelax = new ArrayList<>();
+          //ArrayList<JcAudio> jcAudiosRelax = new ArrayList<>();
           //for (int i = 0; i < resultsRelax.size(); i++) {
             //jcAudiosRelax.add(JcAudio.createFromAssets(resultsRelax.get(i).getTitle(),
               ///  resultsRelax.get(i).getTitle() + ".mp3"));
@@ -139,7 +137,7 @@ public class MainActivity extends AppCompatActivity  {
           /*RealmQuery<Music> query = realm.where(Music.class);
           RealmResults<Music> resultsClassical = query.equalTo(Music.TYPE, "Classical")
               .findAll();*/
-          ArrayList<JcAudio> jcAudiosClassical = new ArrayList<>();
+          //ArrayList<JcAudio> jcAudiosClassical = new ArrayList<>();
           /*for (int i = 0; i < resultsClassical.size(); i++) {
             jcAudiosClassical.add(JcAudio.createFromAssets(resultsClassical.get(i).getTitle(),
                 resultsClassical.get(i).getTitle() + ".mp3"));
