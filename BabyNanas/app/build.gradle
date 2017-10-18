@@ -71,5 +71,3 @@ dependencies {
         transitive = true
     }
 }
-
-
