@@ -14,7 +14,7 @@
     <string name="play_in_bucle">Continuous reproduction</string>
     <string name="play_in_bucle_summary">Mark to repeat the music when the song ends</string>
     <string name="pref_reproduction">Reproduction preferences</string>
-    <string name="stop_play">Parar la reproducció</string>
+    <string name="stop_play">Stop Reproduction</string>
     <string name="stop_play_summary">Select how long you want to play the music, when this time passes the music will stop automatically</string>
     <string name="title_activity_my_preferences">Preferences</string>
     <string name="share_this_app">Share the app</string>

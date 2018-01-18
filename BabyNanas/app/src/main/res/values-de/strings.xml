@@ -4,36 +4,34 @@
     <string name="google_app_id">1:637667919264:android:0bb0f94dc764e9f3</string>
     <string name="youtube_api">AIzaSyBadk6TBj3YYh2zXN8qMiQMLRwR1klzaVQ</string>
     <string name="app_name" translatable="false">BabyNanas</string>
-    <string name="drawer_header_text">Menú</string>
-    <string name="action_settings">Preferències</string>
-    <string name="nanas">Bressol</string>
-    <string name="relax">Relax</string>
-    <string name="classical">Clàsica</string>
-    <string name="configuration">Configuració</string>
-    <string name="about">Sobre nosaltres</string>
-    <string name="play_in_bucle">Reproducció continua</string>
-    <string name="play_in_bucle_summary">Marcar per repetir la música quand tacabi la cançó</string>
-    <string name="pref_reproduction">Preferencies de reproducció</string>
-    <string name="stop_play">Parar la reproducció</string>
-    <string name="stop_play_summary">Selecciona durant quant temps vols reproduir la música, al acabar aquest temps la música es pararà automàticament</string>
-    <string name="title_activity_my_preferences">Preferèncias</string>
-    <string name="share_this_app">Compartir la app</string>
-    <string name="feedback">Comparteix el teu feedback</string>
+    <string name="drawer_header_text">Speisekarte</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="nanas">Wiegenlieder</string>
+    <string name="relax">Entspannen Sie Sich</string>
+    <string name="classical">Klassisch</string>
+    <string name="configuration">Aufbau</string>
+    <string name="about">Über uns</string>
+    <string name="play_in_bucle">Kontinuierliche Wiedergabe</string>
+    <string name="play_in_bucle_summary">Markieren, um die Musik zu wiederholen, wenn das Lied endet</string>
+    <string name="pref_reproduction">Wiedergabepräferenzen</string>
+    <string name="stop_play">Stoppen Sie die Reproduktion</string>
+    <string name="stop_play_summary">Wählen Sie aus, wie lange Sie die Musik wiedergeben möchten. Wenn diese Zeit verstrichen ist, wird die Musik automatisch gestoppt</string>
+    <string name="title_activity_my_preferences">Einstellungen</string>
+    <string name="share_this_app">Teilen Sie die App</string>
+    <string name="feedback">Teilen Sie Ihr Feedback mit uns</string>
 
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
+    <string name="pref_header_general">Allgemeines</string>
 
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact based
-    on your message history
-  </string>
+    <string name="pref_title_social_recommendations">Aktiviere soziale Empfehlungen</string>
+    <string name="pref_description_social_recommendations">Empfehlungen für Kontaktpersonen basierend     auf Ihrem Nachrichtenverlauf</string>
 
-    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_title_display_name">Anzeigename</string>
     <string name="pref_default_display_name">John Smith</string>
 
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string name="pref_title_add_friends_to_messages">Fügen Sie Freunden Nachrichten hinzu</string>
     <string-array name="pref_example_list_titles">
         <item>Always</item>
         <item>When possible</item>
@@ -48,7 +46,7 @@
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>
 
-    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string name="pref_title_sync_frequency">Synchronisierungsfrequenz</string>
     <string-array name="pref_sync_frequency_titles">
         <item>15 minuts</item>
         <item>30 minuts</item>
@@ -80,28 +78,28 @@
 
     <string-array name="multi_select_list_preference_default_value"/>
 
-    <string name="pref_title_system_sync_settings">System sync settings</string>
+    <string name="pref_title_system_sync_settings">System-Synchronisierungseinstellungen</string>
 
     <!-- Example settings for Notifications -->
-    <string name="pref_header_notifications">Notifications</string>
+    <string name="pref_header_notifications">Benachrichtigungen</string>
 
-    <string name="pref_title_new_message_notifications">New message notifications</string>
+    <string name="pref_title_new_message_notifications">Neue Nachrichtenbenachrichtigungen</string>
 
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
+    <string name="pref_title_ringtone">Klingelton</string>
+    <string name="pref_ringtone_silent">Leise</string>
 
-    <string name="pref_title_vibrate">Vibrate</string>
-    <string name="dark_theme">dark</string>
-    <string name="light_theme">light</string>
-    <string name="custom_theme">custom</string>
+    <string name="pref_title_vibrate">Vibrieren</string>
+    <string name="dark_theme">dunkel</string>
+    <string name="light_theme">Licht</string>
+    <string name="custom_theme">Brauch</string>
     <string name="play_button" translatable="false">Play Button</string>
-    <string name="dream_makers">Creadors de somnis</string>
-    <string name="slogan">Apropem les Apps mòbils a quí ho necesiti.</string>
-    <string name="sleep_countdown">Sleep</string>
-    <string name="sleeping_message">La música es pararà en %1$d minuts</string>
-    <string name="repeat">repeat</string>
-    <string name="pref_title_dialog_sel_language">Selecciona Idioma</string>
-    <string name="pref_title_sel_language">Idioma</string>
+    <string name="dream_makers">Traumschöpfer</string>
+    <string name="slogan">Wir bringen mobile Apps für diejenigen, die sie brauchen.</string>
+    <string name="sleep_countdown">Schlaf</string>
+    <string name="sleeping_message">Musik stoppt in %1$d minuten</string>
+    <string name="repeat">wiederholen</string>
+    <string name="pref_title_dialog_sel_language">Sprache auswählen</string>
+    <string name="pref_title_sel_language">Sprache</string>
     <!-- banner real si el cliquem desde test google ens bloquejara compte-->
     <!--<string name="banner_ad_unit_id">ca-app-pub-9062394636198838/2033691508</string>-->
 
