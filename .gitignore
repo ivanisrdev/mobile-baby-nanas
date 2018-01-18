@@ -7,5 +7,4 @@ BabyNanas/\.idea/
 .idea/modules.xml
 .idea/workspace.xml
 
-BabyNanas/app/release/output\.json
-BabyNanas/
+BabyNanas/app/release/
