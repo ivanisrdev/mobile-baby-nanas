@@ -13,4 +13,11 @@
     android:key="stopPlay"
     android:summary="@string/stop_play_summary"
     android:title="@string/stop_play" />
+  <ListPreference
+      android:key="language"
+      android:defaultValue="default"
+      android:dialogTitle="@string/pref_title_dialog_sel_language"
+      android:negativeButtonText="@null"
+      android:positiveButtonText="@null"
+      android:title="@string/pref_title_sel_language" />
 </PreferenceScreen>
