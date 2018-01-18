@@ -4,21 +4,21 @@
     <string name="google_app_id">1:637667919264:android:0bb0f94dc764e9f3</string>
     <string name="youtube_api">AIzaSyBadk6TBj3YYh2zXN8qMiQMLRwR1klzaVQ</string>
     <string name="app_name" translatable="false">BabyNanas</string>
-    <string name="drawer_header_text">Menú</string>
-    <string name="action_settings">Preferències</string>
-    <string name="nanas">Bressol</string>
+    <string name="drawer_header_text">Menu</string>
+    <string name="action_settings">Preferences</string>
+    <string name="nanas">Lullabies</string>
     <string name="relax">Relax</string>
-    <string name="classical">Clàsica</string>
-    <string name="configuration">Configuració</string>
-    <string name="about">Sobre nosaltres</string>
-    <string name="play_in_bucle">Reproducció continua</string>
-    <string name="play_in_bucle_summary">Marcar per repetir la música quand tacabi la cançó</string>
-    <string name="pref_reproduction">Preferencies de reproducció</string>
+    <string name="classical">Classical</string>
+    <string name="configuration">Configuration</string>
+    <string name="about">About us</string>
+    <string name="play_in_bucle">Continuous reproduction</string>
+    <string name="play_in_bucle_summary">Mark to repeat the music when the song ends</string>
+    <string name="pref_reproduction">Reproduction preferences</string>
     <string name="stop_play">Parar la reproducció</string>
-    <string name="stop_play_summary">Selecciona durant quant temps vols reproduir la música, al acabar aquest temps la música es pararà automàticament</string>
-    <string name="title_activity_my_preferences">Preferèncias</string>
-    <string name="share_this_app">Compartir la app</string>
-    <string name="feedback">Comparteix el teu feedback</string>
+    <string name="stop_play_summary">Select how long you want to play the music, when this time passes the music will stop automatically</string>
+    <string name="title_activity_my_preferences">Preferences</string>
+    <string name="share_this_app">Share the app</string>
+    <string name="feedback">Share your feedback</string>
 
     <!-- Strings related to Settings -->
 
@@ -95,13 +95,13 @@
     <string name="light_theme">light</string>
     <string name="custom_theme">custom</string>
     <string name="play_button" translatable="false">Play Button</string>
-    <string name="dream_makers">Creadors de somnis</string>
-    <string name="slogan">Apropem les Apps mòbils a quí ho necesiti.</string>
+    <string name="dream_makers">Dream creators</string>
+    <string name="slogan">We bring mobile apps to those who need them.</string>
     <string name="sleep_countdown">Sleep</string>
-    <string name="sleeping_message">La música es pararà en %1$d minuts</string>
+    <string name="sleeping_message">Music will stop in %1$d minutes</string>
     <string name="repeat">repeat</string>
-    <string name="pref_title_dialog_sel_language">Selecciona Idioma</string>
-    <string name="pref_title_sel_language">Idioma</string>
+    <string name="pref_title_dialog_sel_language">Select Language</string>
+    <string name="pref_title_sel_language">Language</string>
     <!-- banner real si el cliquem desde test google ens bloquejara compte-->
     <!--<string name="banner_ad_unit_id">ca-app-pub-9062394636198838/2033691508</string>-->
 

@@ -7,13 +7,13 @@
     <string name="drawer_header_text">Menú</string>
     <string name="action_settings">Preferències</string>
     <string name="nanas">Bressol</string>
-    <string name="relax">Relax</string>
-    <string name="classical">Clàsica</string>
+    <string name="relax">Relaxant</string>
+    <string name="classical">Clàssica</string>
     <string name="configuration">Configuració</string>
     <string name="about">Sobre nosaltres</string>
     <string name="play_in_bucle">Reproducció continua</string>
     <string name="play_in_bucle_summary">Marcar per repetir la música quand tacabi la cançó</string>
-    <string name="pref_reproduction">Preferencies de reproducció</string>
+    <string name="pref_reproduction">Preferències de reproducció</string>
     <string name="stop_play">Parar la reproducció</string>
     <string name="stop_play_summary">Selecciona durant quant temps vols reproduir la música, al acabar aquest temps la música es pararà automàticament</string>
     <string name="title_activity_my_preferences">Preferèncias</string>
@@ -25,15 +25,13 @@
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact based
-    on your message history
-  </string>
+    <string name="pref_title_social_recommendations">Enable social recommenActiva les recomanacions socials dations</string>
+    <string name="pref_description_social_recommendations">Recomanacions per contactar amb persones basades     en el vostre historial de missatges</string>
 
-    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_title_display_name">Nom</string>
     <string name="pref_default_display_name">John Smith</string>
 
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string name="pref_title_add_friends_to_messages">"Afegiu amics als missatges "</string>
     <string-array name="pref_example_list_titles">
         <item>Always</item>
         <item>When possible</item>
@@ -48,7 +46,7 @@
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>
 
-    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string name="pref_title_sync_frequency">"Freqüència de sincronització "</string>
     <string-array name="pref_sync_frequency_titles">
         <item>15 minuts</item>
         <item>30 minuts</item>
@@ -80,26 +78,26 @@
 
     <string-array name="multi_select_list_preference_default_value"/>
 
-    <string name="pref_title_system_sync_settings">System sync settings</string>
+    <string name="pref_title_system_sync_settings">"Configuració de sincronització del sistema "</string>
 
     <!-- Example settings for Notifications -->
-    <string name="pref_header_notifications">Notifications</string>
+    <string name="pref_header_notifications">Notificacions</string>
 
-    <string name="pref_title_new_message_notifications">New message notifications</string>
+    <string name="pref_title_new_message_notifications">Noves notificacions</string>
 
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
+    <string name="pref_title_ringtone">Tonalitat</string>
+    <string name="pref_ringtone_silent">Silenciós</string>
 
-    <string name="pref_title_vibrate">Vibrate</string>
-    <string name="dark_theme">dark</string>
-    <string name="light_theme">light</string>
-    <string name="custom_theme">custom</string>
+    <string name="pref_title_vibrate">Vibrar</string>
+    <string name="dark_theme">fosc</string>
+    <string name="light_theme">llum</string>
+    <string name="custom_theme">personalitzat</string>
     <string name="play_button" translatable="false">Play Button</string>
     <string name="dream_makers">Creadors de somnis</string>
     <string name="slogan">Apropem les Apps mòbils a quí ho necesiti.</string>
-    <string name="sleep_countdown">Sleep</string>
+    <string name="sleep_countdown">Dormir</string>
     <string name="sleeping_message">La música es pararà en %1$d minuts</string>
-    <string name="repeat">repeat</string>
+    <string name="repeat">repetir</string>
     <string name="pref_title_dialog_sel_language">Tria Idioma</string>
     <string name="pref_title_sel_language">Idioma</string>
     <!-- banner real si el cliquem desde test google ens bloquejara compte-->

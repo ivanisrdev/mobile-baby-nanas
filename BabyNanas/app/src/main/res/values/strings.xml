@@ -1,23 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <!-- App id -->
   <string name="google_app_id">1:637667919264:android:0bb0f94dc764e9f3</string>
   <string name="youtube_api">AIzaSyBadk6TBj3YYh2zXN8qMiQMLRwR1klzaVQ</string>
   <string name="app_name" translatable="false">BabyNanas</string>
-  <string name="drawer_header_text">Menú</string>
-  <string name="action_settings">Preferéncias</string>
-  <string name="nanas">Nanas</string>
+  <string name="drawer_header_text">Menu</string>
+  <string name="action_settings">Preferences</string>
+  <string name="nanas">Lullabies</string>
   <string name="relax">Relax</string>
-  <string name="classical">Clásica</string>
-  <string name="configuration">Configuración</string>
-  <string name="about">Sobre nosotros</string>
-  <string name="play_in_bucle">Reproducción continua</string>
-  <string name="play_in_bucle_summary">Marcar para repetir la música cuando termine la canción</string>
-  <string name="pref_reproduction">Preferencias reproducción</string>
-  <string name="stop_play">Parar la reproducción</string>
-  <string name="stop_play_summary">Selecciona durante cuanto tiempo quieres reproduir la música, al pasar este tiempo la música se parará automáticamente</string>
-  <string name="title_activity_my_preferences">Preferéncias</string>
-  <string name="share_this_app">Compartir la app</string>
-  <string name="feedback">Comparte tu feedback</string>
+  <string name="classical">Classical</string>
+  <string name="configuration">Configuration</string>
+  <string name="about">About us</string>
+  <string name="play_in_bucle">Continuous reproduction</string>
+  <string name="play_in_bucle_summary">Mark to repeat the music when the song ends</string>
+  <string name="pref_reproduction">Reproduction preferences</string>
+  <string name="stop_play">Parar la reproducció</string>
+  <string name="stop_play_summary">Select how long you want to play the music, when this time passes the music will stop automatically</string>
+  <string name="title_activity_my_preferences">Preferences</string>
+  <string name="share_this_app">Share the app</string>
+  <string name="feedback">Share your feedback</string>
 
   <!-- Strings related to Settings -->
 
@@ -49,11 +50,11 @@
 
   <string name="pref_title_sync_frequency">Sync frequency</string>
   <string-array name="pref_sync_frequency_titles">
-    <item>15 minutes</item>
-    <item>30 minutes</item>
-    <item>1 hour</item>
-    <item>3 hours</item>
-    <item>6 hours</item>
+    <item>15 minuts</item>
+    <item>30 minuts</item>
+    <item>1 hora</item>
+    <item>3 hores</item>
+    <item>6 hores</item>
     <item>Never</item>
   </string-array>
   <string-array name="pref_sync_frequency_values">
@@ -94,13 +95,13 @@
   <string name="light_theme">light</string>
   <string name="custom_theme">custom</string>
   <string name="play_button" translatable="false">Play Button</string>
-  <string name="dream_makers">Creadores de sueños</string>
-  <string name="slogan">Acercamos las Apps móviles a quienes lo necesiten.</string>
+  <string name="dream_makers">Dream creators</string>
+  <string name="slogan">We bring mobile apps to those who need them.</string>
   <string name="sleep_countdown">Sleep</string>
-  <string name="sleeping_message">La música se parará en %1$d minutos</string>
-    <string name="repeat">repeat</string>
-  <string name="pref_title_dialog_sel_language">Selecciona Idioma</string>
-  <string name="pref_title_sel_language">Idioma</string>
+  <string name="sleeping_message">Music will stop in %1$d minutes</string>
+  <string name="repeat">repeat</string>
+  <string name="pref_title_dialog_sel_language">Select Language</string>
+  <string name="pref_title_sel_language">Language</string>
   <!-- banner real si el cliquem desde test google ens bloquejara compte-->
   <!--<string name="banner_ad_unit_id">ca-app-pub-9062394636198838/2033691508</string>-->
 
