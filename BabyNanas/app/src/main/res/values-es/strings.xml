@@ -1,0 +1,107 @@
+<resources>
+    <!-- App id -->
+    <string name="google_app_id">1:637667919264:android:0bb0f94dc764e9f3</string>
+    <string name="youtube_api">AIzaSyBadk6TBj3YYh2zXN8qMiQMLRwR1klzaVQ</string>
+    <string name="app_name" translatable="false">BabyNanas</string>
+    <string name="drawer_header_text">Menú</string>
+    <string name="action_settings">Preferéncias</string>
+    <string name="nanas">Nanas</string>
+    <string name="relax">Relax</string>
+    <string name="classical">Clásica</string>
+    <string name="configuration">Configuración</string>
+    <string name="about">Sobre nosotros</string>
+    <string name="play_in_bucle">Reproducción continua</string>
+    <string name="play_in_bucle_summary">Marcar para repetir la música cuando termine la canción</string>
+    <string name="pref_reproduction">Preferencias reproducción</string>
+    <string name="stop_play">Parar la reproducción</string>
+    <string name="stop_play_summary">Selecciona durante cuanto tiempo quieres reproduir la música, al pasar este tiempo la música se parará automáticamente</string>
+    <string name="title_activity_my_preferences">Preferéncias</string>
+    <string name="share_this_app">Compartir la app</string>
+    <string name="feedback">Comparte tu feedback</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact based
+    on your message history
+  </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value"/>
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="dark_theme">dark</string>
+    <string name="light_theme">light</string>
+    <string name="custom_theme">custom</string>
+    <string name="play_button" translatable="false">Play Button</string>
+    <string name="dream_makers">Creadores de sueños</string>
+    <string name="slogan">Acercamos las Apps móviles a quienes lo necesiten.</string>
+    <string name="sleep_countdown">Sleep</string>
+    <string name="sleeping_message">La música se parará en %1$d minutos</string>
+    <string name="repeat">repeat</string>
+    <string name="pref_title_dialog_sel_language">Selecciona Idioma</string>
+    <string name="pref_title_sel_language">Idioma</string>
+    <!-- banner real si el cliquem desde test google ens bloquejara compte-->
+    <!--<string name="banner_ad_unit_id">ca-app-pub-9062394636198838/2033691508</string>-->
+
+</resources>
