@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="pref_language_list_values">
-        <item>default</item>
+        <item>en</item>
         <item>es</item>
         <item>en</item>
-        <item>it</item>
+        <item>de</item>
+        <item>fr</item>
+        <item>ca</item>
+        <item>pt</item>
     </string-array>
 </resources>
