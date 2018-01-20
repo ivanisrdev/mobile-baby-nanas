@@ -18,6 +18,8 @@ import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import static android.graphics.ColorSpace.Model.XYZ;
+
 public class MyPreferencesActivity extends PreferenceActivity {
 
   @Override
@@ -40,7 +42,7 @@ public class MyPreferencesActivity extends PreferenceActivity {
       setListPreferenceData(listPreference);
 
 
-
+    listPreference.setOnPreferenceChangeListener(languageChangeListener);
 
     }
 
@@ -49,7 +51,7 @@ public class MyPreferencesActivity extends PreferenceActivity {
 
       @Override
       public boolean onPreferenceChange(Preference preference, Object newValue) {
-
+        Log.i("Member name: ",newValue.toString());
         switch (newValue.toString()) {
           case "en":
             setLocale("en");
@@ -61,7 +63,8 @@ public class MyPreferencesActivity extends PreferenceActivity {
             Toast.makeText(MyApplication.getInstance().getApplicationContext(), "Locale in French!", Toast.LENGTH_LONG).show();
             break;
         }
-        return false;
+        setLocale("ca");
+        return true;
       }
     };
 
@@ -73,8 +76,8 @@ public class MyPreferencesActivity extends PreferenceActivity {
       Configuration conf = res.getConfiguration();
       conf.locale = myLocale;
       res.updateConfiguration(conf, dm);
-      Intent refresh = new Intent( );
-      startActivity(refresh);
+      Intent i = new Intent(this,MyPreferencesActivity.class);
+      startActivity(i);
     }
 
 
