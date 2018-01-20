@@ -36,7 +36,8 @@
     </activity>
     <activity
       android:label="@string/title_activity_my_preferences"
-      android:name=".MyPreferencesActivity">
+      android:name=".MyPreferencesActivity"
+      android:configChanges="locale">
     </activity>
 
     <service android:exported="false"
