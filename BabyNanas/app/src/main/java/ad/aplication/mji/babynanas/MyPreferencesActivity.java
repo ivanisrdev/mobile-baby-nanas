@@ -18,7 +18,6 @@ import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import static android.graphics.ColorSpace.Model.XYZ;
 
 public class MyPreferencesActivity extends PreferenceActivity {
 
