@@ -31,22 +31,25 @@
       android:name=".MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
+
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
     <activity
+      android:configChanges="locale|layoutDirection"
       android:label="@string/title_activity_my_preferences"
-      android:name=".MyPreferencesActivity"
-      android:configChanges="locale">
+      android:name=".MyPreferencesActivity">
     </activity>
 
-    <service android:exported="false"
+    <service
+      android:exported="false"
       android:name=".MyFirebaseMessagingService">
       <intent-filter>
         <action android:name="com.google.firebase.MESSAGING_EVENT"/>
       </intent-filter>
     </service>
-    <service android:exported="false"
+    <service
+      android:exported="false"
       android:name=".MyFirebaseInstanceIDService">
       <intent-filter>
         <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
@@ -55,7 +58,10 @@
 
     <activity android:name=".AboutActivity">
     </activity>
-
+    <activity android:name=".ChannelActivity">
+    </activity>
+    <activity android:name=".VideoActivity">
+    </activity>
   </application>
 
 </manifest>

@@ -44,8 +44,7 @@ public class MyPreferencesActivity extends PreferenceActivity {
     listPreference.setOnPreferenceChangeListener(languageChangeListener);
 
     }
-
-
+     
     Preference.OnPreferenceChangeListener languageChangeListener = new Preference.OnPreferenceChangeListener() {
 
       @Override
@@ -61,8 +60,31 @@ public class MyPreferencesActivity extends PreferenceActivity {
             setLocale("fr");
             Toast.makeText(MyApplication.getInstance().getApplicationContext(), "Locale in French!", Toast.LENGTH_LONG).show();
             break;
+
+          case "es":
+            setLocale("es");
+            Toast.makeText(MyApplication.getInstance().getApplicationContext(), "Locale in Spanish!", Toast.LENGTH_LONG).show();
+            break;
+
+          case "ca":
+            setLocale("ca");
+            Toast.makeText(MyApplication.getInstance().getApplicationContext(), "Locale in Catalan!", Toast.LENGTH_LONG).show();
+            break;
+
+          case "de":
+            setLocale("de");
+            Toast.makeText(MyApplication.getInstance().getApplicationContext(), "Locale in Deutch!", Toast.LENGTH_LONG).show();
+            break;
+
+          case "pt":
+            setLocale("pt");
+            Toast.makeText(MyApplication.getInstance().getApplicationContext(), "Locale in Portugal!", Toast.LENGTH_LONG).show();
+            break;
+
+            default:
+              setLocale("en");
         }
-        setLocale("ca");
+
         return true;
       }
     };
@@ -75,29 +97,28 @@ public class MyPreferencesActivity extends PreferenceActivity {
       Configuration conf = res.getConfiguration();
       conf.locale = myLocale;
       res.updateConfiguration(conf, dm);
-      Intent i = new Intent(this,MyPreferencesActivity.class);
-      startActivity(i);
+      restartActivity();
     }
 
-
+    private void restartActivity() {
+      Intent intent = getActivity().getIntent();
+      getActivity().finish();
+      startActivity(intent);
+    }
   }
 
 
   public static String[] getAppSupportedLaungages(Context context, String[] langs) {
-
-    Configuration conf = context.getResources().getConfiguration();
-
     String[] displayNames = new String[langs.length];
     displayNames[0] = "Auto";
     int size = langs.length;
     for (int i=1; i < size; i++) {
-      conf.locale = new Locale(langs[i]);
-      displayNames[i] = ucFirst(conf.locale.getDisplayName());
+      Locale tempLocale = new Locale(langs[i]);
+      displayNames[i] = ucFirst(tempLocale.getDisplayName());
     }
 
     return displayNames;
   }
-
 
   public static Map<String, String> getAppSupportedLaungages(Context context, String appDefaultLang) {
     Map<String, String> listAppLocales = new LinkedHashMap<>();
@@ -153,4 +174,5 @@ public class MyPreferencesActivity extends PreferenceActivity {
     lp.setEntryValues(entryValues);
     lp.setDefaultValue("default");
   }
+
 }
