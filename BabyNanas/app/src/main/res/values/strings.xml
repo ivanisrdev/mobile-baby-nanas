@@ -110,6 +110,7 @@
   <string name="repeat">repeat</string>
   <string name="pref_title_dialog_sel_language">Select Language</string>
   <string name="pref_title_sel_language">Language</string>
+  <string name="youtube_nanas">Youtube Channel</string>
   <!-- banner real si el cliquem desde test google ens bloquejara compte-->
   <!--<string name="banner_ad_unit_id">ca-app-pub-9062394636198838/2033691508</string>-->
 

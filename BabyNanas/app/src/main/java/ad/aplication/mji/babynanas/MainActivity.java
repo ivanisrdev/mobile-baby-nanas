@@ -95,7 +95,10 @@ public class MainActivity extends AppCompatActivity  {
                 Intent aboutIntent = new Intent(MainActivity.this, AboutActivity.class);
                 startActivity(aboutIntent);
                 return true;
-
+              case R.id.youtube_channel:
+                Intent youtubeChannelIntent = new Intent(MainActivity.this, ChannelActivity.class);
+                startActivity(youtubeChannelIntent);
+                return true;
               default:
                 return true;
             }

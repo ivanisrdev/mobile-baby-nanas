@@ -8,16 +8,18 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+
+
 public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
   YouTubePlayerView youTubePlayerView;
-  String API_KEY="Your API Key";
+  String API_KEY="AIzaSyBadk6TBj3YYh2zXN8qMiQMLRwR1klzaVQ";
   private static final int RECOVERY_REQUEST = 1;
   String TAG="VideoActivity";
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_video);
-    youTubePlayerView=(YouTubePlayerView)findViewById(R.id.youtubeview);
+    youTubePlayerView= findViewById(R.id.youtubeview);
     youTubePlayerView.initialize(API_KEY, this);
   }
   @Override

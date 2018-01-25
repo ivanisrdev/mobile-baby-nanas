@@ -25,7 +25,7 @@ public class ChannelActivity extends AppCompatActivity {
   CustomListAdapter customListAdapter;
   String searchName;
   String TAG="ChannelActivity";
-  String URL="https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCtWuHtjRPM6CZnQn0cLvoSw&maxResults=25&key=AIzaSyBadk6TBj3YYh2zXN8qMiQMLRwR1klzaVQ";
+  String URL="https://www.googleapis.com/youtube/v3/search?key=AIzaSyBadk6TBj3YYh2zXN8qMiQMLRwR1klzaVQ&part=snippet&channelId=UCtWuHtjRPM6CZnQn0cLvoSw";
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

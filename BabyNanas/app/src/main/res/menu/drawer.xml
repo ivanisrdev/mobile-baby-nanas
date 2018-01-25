@@ -14,6 +14,11 @@
             android:id="@+id/classical_music"
             android:icon="@drawable/ic_menu_classical"
             android:title="@string/classical" />
+
+        <item
+          android:id="@+id/youtube_channel"
+          android:icon="@android:drawable/ic_menu_gallery"
+          android:title="@string/youtube_nanas" />
     </group>
 
     <item android:title="@string/action_settings">
