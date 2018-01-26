@@ -2,7 +2,7 @@
 <resources>
   <!-- App id -->
   <string name="google_app_id">1:637667919264:android:0bb0f94dc764e9f3</string>
-  <string name="youtube_api">AIzaSyBadk6TBj3YYh2zXN8qMiQMLRwR1klzaVQ</string>
+  <string name="youtube_api" translatable="false">AIzaSyBadk6TBj3YYh2zXN8qMiQMLRwR1klzaVQ</string>
   <string name="app_name" translatable="false">BabyNanas</string>
   <string name="drawer_header_text">Menu</string>
   <string name="action_settings">Preferences</string>
@@ -76,7 +76,7 @@
     <item>3</item>
   </string-array>
 
-  <string-array name="pref_language_list_values">
+  <string-array name="pref_language_list_values" translatable="false">
     <item>en</item>
     <item>es</item>
     <item>en</item>
@@ -110,7 +110,7 @@
   <string name="repeat">repeat</string>
   <string name="pref_title_dialog_sel_language">Select Language</string>
   <string name="pref_title_sel_language">Language</string>
-  <string name="youtube_nanas">Youtube Channel</string>
+  <string name="youtube_nanas" translatable="false">Youtube Channel</string>
   <!-- banner real si el cliquem desde test google ens bloquejara compte-->
   <!--<string name="banner_ad_unit_id">ca-app-pub-9062394636198838/2033691508</string>-->
 

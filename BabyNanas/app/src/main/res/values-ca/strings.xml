@@ -2,8 +2,6 @@
 <resources>
     <!-- App id -->
     <string name="google_app_id">1:637667919264:android:0bb0f94dc764e9f3</string>
-    <string name="youtube_api">AIzaSyBadk6TBj3YYh2zXN8qMiQMLRwR1klzaVQ</string>
-    <string name="app_name" translatable="false">BabyNanas</string>
     <string name="drawer_header_text">Menú</string>
     <string name="action_settings">Preferències</string>
     <string name="nanas">Bressol</string>
@@ -92,7 +90,6 @@
     <string name="dark_theme">fosc</string>
     <string name="light_theme">llum</string>
     <string name="custom_theme">personalitzat</string>
-    <string name="play_button" translatable="false">Play Button</string>
     <string name="dream_makers">Creadors de somnis</string>
     <string name="slogan">Apropem les Apps mòbils a quí ho necesiti.</string>
     <string name="sleep_countdown">Dormir</string>

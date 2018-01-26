@@ -2,8 +2,6 @@
 <resources>
     <!-- App id -->
     <string name="google_app_id">1:637667919264:android:0bb0f94dc764e9f3</string>
-    <string name="youtube_api">AIzaSyBadk6TBj3YYh2zXN8qMiQMLRwR1klzaVQ</string>
-    <string name="app_name" translatable="false">BabyNanas</string>
     <string name="drawer_header_text">Menú</string>
     <string name="action_settings">Préférences</string>
     <string name="nanas">Berceuses</string>
@@ -92,7 +90,6 @@
     <string name="dark_theme">foncé</string>
     <string name="light_theme">lumière</string>
     <string name="custom_theme">Douane</string>
-    <string name="play_button" translatable="false">Play Button</string>
     <string name="dream_makers">Créateurs de rêves</string>
     <string name="slogan">Nous apportons des applications mobiles à ceux qui en ont besoin.</string>
     <string name="sleep_countdown">Dormir</string>
