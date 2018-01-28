@@ -30,7 +30,7 @@ public class ChannelActivity extends AppCompatActivity {
   String searchName;
   String TAG="ChannelActivity";
   String URL="https://www.googleapis.com/youtube/v3/search?key=AIzaSyC_wZKJcHfx3jgHTtGU0ermO7uptkiANnY"
-      + "&channelId=UCtWuHtjRPM6CZnQn0cLvoSw&part=snippet&maxResult=50";
+      + "&channelId=UCtWuHtjRPM6CZnQn0cLvoSw&part=snippet&maxResults=50";
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
