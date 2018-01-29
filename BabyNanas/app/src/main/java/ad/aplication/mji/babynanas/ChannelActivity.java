@@ -1,8 +1,8 @@
 package ad.aplication.mji.babynanas;
 
 import ad.aplication.mji.babynanas.adapters.CustomListAdapter;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListView;
 import com.android.volley.AuthFailureError;
@@ -28,16 +28,16 @@ public class ChannelActivity extends AppCompatActivity {
   ArrayList<VideoDetails> videoDetailsArrayList;
   CustomListAdapter customListAdapter;
   String searchName;
-  String TAG="ChannelActivity";
-  String URL="https://www.googleapis.com/youtube/v3/search?key=AIzaSyC_wZKJcHfx3jgHTtGU0ermO7uptkiANnY"
+  String TAG = "ChannelActivity";
+  String URL = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyC_wZKJcHfx3jgHTtGU0ermO7uptkiANnY"
       + "&channelId=UCtWuHtjRPM6CZnQn0cLvoSw&part=snippet&maxResults=50";
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_channel);
-    lvVideo=(ListView)findViewById(R.id.videoList);
-    videoDetailsArrayList=new ArrayList<>();
-    customListAdapter=new CustomListAdapter(ChannelActivity.this,videoDetailsArrayList);
+    lvVideo = findViewById(R.id.videoList);
+    videoDetailsArrayList = new ArrayList<>();
+    customListAdapter = new CustomListAdapter(ChannelActivity.this,videoDetailsArrayList);
     showVideo();
   }
   private void showVideo() {

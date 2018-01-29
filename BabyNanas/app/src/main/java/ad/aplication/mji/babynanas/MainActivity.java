@@ -27,6 +27,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,12 +35,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import realmBD.Music;
 
 public class MainActivity extends AppCompatActivity  {
@@ -51,6 +68,8 @@ public class MainActivity extends AppCompatActivity  {
   private MediaPlayer mediaPlayer;
   private int length;
   private long itemPosition = -1;
+
+  static String TAG = "MainActivity";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -271,6 +290,7 @@ public class MainActivity extends AppCompatActivity  {
   public static class MusicTypeFragment extends Fragment {
 
     private static final String TAB_POSITION = "tab_position";
+    ArrayList<VideoDetails> videoDetailsArrayList = new ArrayList<>();
 
     public MusicTypeFragment() {
     }
@@ -285,28 +305,97 @@ public class MainActivity extends AppCompatActivity  {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
         Bundle savedInstanceState) {
 
       Bundle args = getArguments();
       int tabPosition = args.getInt(TAB_POSITION);
 
       if (tabPosition == 1) {
-        RealmQuery<Music> query = realm.where(Music.class);
+        /*RealmQuery<Music> query = realm.where(Music.class);
         RealmResults<Music> resultsNana = query.equalTo(Music.TYPE, "Nana")
-            .findAll();
-        View v = inflater.inflate(R.layout.fragment_list_music, container, false);
-        RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
-        RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
-        recyclerView.setItemAnimator(itemAnimator);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setItemViewCacheSize(20);
-        recyclerView.setDrawingCacheEnabled(true);
-        recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        MusicRecyclerAdapter musicRecyclerAdapter = new MusicRecyclerAdapter(
-            (MainActivity) getActivity(), resultsNana);
-        recyclerView.setAdapter(musicRecyclerAdapter);
+            .findAll();*/
+        final View v = inflater.inflate(R.layout.fragment_list_music, container, false);
+        String URL = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyC_wZKJcHfx3jgHTtGU0ermO7uptkiANnY"
+            + "&channelId=UCtWuHtjRPM6CZnQn0cLvoSw&part=snippet&maxResults=50";
+        RequestQueue requestQueue= Volley.newRequestQueue((getActivity().getApplicationContext()));
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+          @Override
+          public void onResponse(String response) {
+            try {
+              JSONObject jsonObject=new JSONObject(response);
+              JSONArray jsonArray=jsonObject.getJSONArray("items");
+              for(int i=0;i<jsonArray.length();i++) {
+                JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                JSONObject jsonVideoId = jsonObject1.getJSONObject("id");
+                boolean isVideo = jsonVideoId.getString("kind").equals("youtube#video");
+                if (isVideo) {
+                  JSONObject jsonsnippet = jsonObject1.getJSONObject("snippet");
+                  JSONObject jsonObjectdefault = jsonsnippet.getJSONObject("thumbnails")
+                      .getJSONObject("medium");
+                  VideoDetails videoDetails = new VideoDetails();
+                  String videoid = jsonVideoId.getString("videoId");
+                  Log.e(TAG, " New Video Id" + videoid);
+                  videoDetails.setURL(jsonObjectdefault.getString("url"));
+                  videoDetails.setVideoName(jsonsnippet.getString("title"));
+                  videoDetails.setVideoDesc(jsonsnippet.getString("description"));
+                  videoDetails.setVideoId(videoid);
+                  videoDetailsArrayList.add(videoDetails);
+                }
+              }
+
+              RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
+              RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
+              recyclerView.setItemAnimator(itemAnimator);
+              recyclerView.setHasFixedSize(true);
+              recyclerView.setItemViewCacheSize(20);
+              recyclerView.setDrawingCacheEnabled(true);
+              recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+              recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+              YoutubeChannelRecyclerAdapter youtubeChannelRecyclerAdapter = new YoutubeChannelRecyclerAdapter(
+                  getActivity(), videoDetailsArrayList);
+              recyclerView.setAdapter(youtubeChannelRecyclerAdapter);
+            } catch (JSONException e) {
+              e.printStackTrace();
+            }
+          }
+        }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            NetworkResponse networkResponse = error.networkResponse;
+            error.printStackTrace();
+          }
+        })
+        {
+
+          @Override
+          protected Map<String, String> getParams() throws AuthFailureError {
+            HashMap<String,String> hashMap= new HashMap<>();
+            hashMap.put("key","AIzaSyBadk6TBj3YYh2zXN8qMiQMLRwR1klzaVQ");
+            hashMap.put("part","snippet");
+            hashMap.put("channelId","UC1NF71EwP41VdjAU1iXdLkw");
+            hashMap.put("maxResult","50");
+            return  hashMap;
+          }
+
+          @Override
+          public Map<String, String> getHeaders() throws AuthFailureError {
+            HashMap<String, String> headers = new HashMap<>();
+            // do not add anything here
+            return headers;
+          }
+          @Override
+          public String getBodyContentType() {
+            return "application/json";
+          }
+
+        };
+        int socketTimeout = 30000;
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
+        requestQueue.add(stringRequest);
+
+
         //musicRecyclerAdapter.notifyDataSetChanged();
 
         return v;
@@ -354,6 +443,7 @@ public class MainActivity extends AppCompatActivity  {
         }
         return null;
       }
+
     }
   }
 
