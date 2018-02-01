@@ -71,6 +71,7 @@ public class MyApplication extends Application {
 
       realm.beginTransaction();
       // Add a music type Nana
+/*
       Music musicNana6 = new Music(6L, "A dormir", "Nana", 0, "baby12");
       realm.copyToRealmOrUpdate(musicNana6);
       Music musicNana1 = new Music(1L, "Angel feliz", "Nana", 0, "baby5");
@@ -83,6 +84,7 @@ public class MyApplication extends Application {
       realm.copyToRealmOrUpdate(musicNana4);
       Music musicNana5 = new Music(5L, "Ea la nana", "Nana", 0, "baby3");
       realm.copyToRealmOrUpdate(musicNana5);
+*/
 
       // Add a music type Relax
       Music musicRelax1 = new Music(7L, "Agua", "Relax", 0, "agua");
