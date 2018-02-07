@@ -116,6 +116,41 @@ public class MyApplication extends Application {
       Music musicRelax8 = new Music(14L, "Vientre", "Relax", 0, "vientre");
       realm.copyToRealmOrUpdate(musicRelax8);
 
+      Music musicRelax17 = new Music(100L, "Alamo", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax17);
+      Music musicRelax18 = new Music(101L, "Bosque", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax18);
+      Music musicRelax19 = new Music(102L, "CampanaVienteo", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax19);
+      Music musicRelax20 = new Music(103L, "ConversacionPersonase", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax20);
+      Music musicRelax21 = new Music(104L, "Delfin", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax21);
+      Music musicRelax22 = new Music(105L, "Fuego2", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax22);
+      Music musicRelax23 = new Music(106L, "Gato", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax23);
+      Music musicRelax24 = new Music(107L, "Grillos", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax24);
+      Music musicRelax25 = new Music(108L, "Lluvia2", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax25);
+      Music musicRelax26 = new Music(109L, "Lluvia3", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax26);
+      Music musicRelax27 = new Music(110L, "Mar2", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax27);
+      Music musicRelax28 = new Music(111L, "Nieve", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax28);
+      Music musicRelax29 = new Music(112L, "Pajaros2", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax29);
+      Music musicRelax30 = new Music(113L, "Rio", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax30);
+      Music musicRelax31 = new Music(114L, "Trueno", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax31);
+      Music musicRelax32 = new Music(115L, "Viento2", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax32);
+      Music musicRelax33 = new Music(116L, "Viento3", "Relax", 0, "vientre");
+      realm.copyToRealmOrUpdate(musicRelax33);
+
       // Add a music type Classical
       Music musicClassical1 = new Music(50L, "Bach_Prelude", "Classical", 0, "baby10");
       realm.copyToRealmOrUpdate(musicClassical1);
