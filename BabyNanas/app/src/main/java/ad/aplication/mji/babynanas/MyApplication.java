@@ -120,9 +120,9 @@ public class MyApplication extends Application {
       realm.copyToRealmOrUpdate(musicRelax17);
       Music musicRelax18 = new Music(101L, "Bosque", "Relax", 0, "bosque");
       realm.copyToRealmOrUpdate(musicRelax18);
-      Music musicRelax19 = new Music(102L, "CampanaVienteo", "Relax", 0, "campana");
+      Music musicRelax19 = new Music(102L, "Campana", "Relax", 0, "campana");
       realm.copyToRealmOrUpdate(musicRelax19);
-      Music musicRelax20 = new Music(103L, "ConversacionPersonase", "Relax", 0, "personas");
+      Music musicRelax20 = new Music(103L, "Conversaciones", "Relax", 0, "personas");
       realm.copyToRealmOrUpdate(musicRelax20);
       Music musicRelax21 = new Music(104L, "Delfin", "Relax", 0, "delfin");
       realm.copyToRealmOrUpdate(musicRelax21);
