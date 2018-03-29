@@ -8,3 +8,7 @@ BabyNanas/\.idea/
 .idea/workspace.xml
 
 BabyNanas/app/release/
+BabyNanas/app/gradlew
+BabyNanas/app/gradle/wrapper/gradle-wrapper.properties
+BabyNanas/app/gradlew.bat
+BabyNanas/app/gradle/wrapper/gradle-wrapper.jar
